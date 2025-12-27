@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Figur - Home Page</title>
+    <title>Figur - More than a digital payment</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,29 +15,34 @@
   </head>
   <body>
     <header>
-      <div class="nav-brand">
+      <a href="/" class="nav-brand">
         <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
           fill="#0052FF"
           role="img"
+          aria-hidden="true"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
           class=""
         >
-          <title>figur</title>
+          <title id="logo-title">figur</title>
           <path
             d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z"
           />
         </svg>
         <span>figur</span>
-      </div>
-      <nav id="navbar">
+      </a>
+      <nav id="navbar" aria-label="Main navigation">
         <ul>
           <li>
-            Individual
-            <button aria-label="Scroll down">
+            <button
+              aria-expanded="false"
+              aria-haspopup="menu"
+              id="individual-button"
+            >
+              Individual
               <svg
                 width="24"
                 height="24"
@@ -47,21 +52,24 @@
               >
                 <path d="M12 16L6 10H18L12 16Z" fill="currentColor" />
               </svg>
+              <!-- Individual Menu -->
+              <!-- <ul id="individual-menu" role="menu" aria-labelledby="individual-button"></ul> -->
             </button>
           </li>
-          <li>Business</li>
-          <li>Blog</li>
+          <li><a href="/business">Business</a></li>
+          <li><a href="/blog">Blog</a></li>
         </ul>
       </nav>
       <div class="nav-buttons">
-        <button aria-label="Login">Login</button>
-        <button aria-label="Sign up">Sign Up</button>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
       </div>
     </header>
-    <main>
-      <article class="hero">
+    <main id="main-content">
+      <!-- HERO SECTION -->
+      <section class="hero">
         <section class="hero-writeup">
-          <div class="hero-writeup__green">
+          <div class="hero-highlight">
             <span>More than a digital payment</span>
             <div class="bolt-ctn">
               <img
@@ -69,17 +77,18 @@
                 height="24"
                 src="https://img.icons8.com/material-outlined/24/FFFFFF/lightning-bolt--v1.png"
                 alt="lightning-bolt--v1"
+                aria-hidden="true"
               />
             </div>
           </div>
-          <h1 class="hero-writeup__title">Your financial lifestyle app</h1>
+          <h1 class="hero-headline">Your financial lifestyle app</h1>
           <p class="hero-writeup__desc">
             Experience seamless accessibility to pay bills effortlessly, own a
             Virtual Dollar Card, convert excess Airtime to Cash, and enjoy Awoof
             Data services.
           </p>
           <div class="hero-writeup__buttons">
-            <button>
+            <a href="" aria-hidden="true" aria-label="Get it on Google Play">
               <svg
                 width="140"
                 height="42"
@@ -104,8 +113,16 @@
                   fill="#00D3FF"
                 />
               </svg>
-            </button>
-            <button>
+              <div class="btn-info">
+                <p>Get in on</p>
+                <p>Google Play</p>
+              </div>
+            </a>
+            <a
+              href=""
+              aria-hidden="true"
+              aria-label="Download on the App Store"
+            >
               <svg
                 width="40"
                 height="40"
@@ -118,10 +135,19 @@
                   d="M15.769 0c.053 0 .106 0 .162 0 .13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zM20.67 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.186 2.282 1.454 3.558 3.038 4.31z"
                 />
               </svg>
-            </button>
+              <div class="btn-info">
+                <p>Download on the</p>
+                <p>App Store</p>
+              </div>
+            </a>
           </div>
         </section>
-      </article>
+        <section class="hero-video">
+          <video>
+            <source />
+          </video>
+        </section>
+      </section>
     </main>
   </body>
 </html>
