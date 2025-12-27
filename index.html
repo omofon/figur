@@ -67,34 +67,38 @@
     </header>
     <main id="main-content">
       <!-- HERO SECTION -->
-      <section class="hero">
-        <section class="hero-writeup">
-          <div class="hero-highlight">
+      <div class="hero">
+        <div class="hero__content">
+          <div class="hero__highlight">
             <span>More than a digital payment</span>
-            <div class="bolt-ctn">
+            <div class="hero__bolt-ctn" aria-hidden="true">
               <img
                 width="24"
                 height="24"
                 src="https://img.icons8.com/material-outlined/24/FFFFFF/lightning-bolt--v1.png"
-                alt="lightning-bolt--v1"
-                aria-hidden="true"
+                alt=""
+                role="presentation"
               />
             </div>
           </div>
-          <h1 class="hero-headline">Your financial lifestyle app</h1>
-          <p class="hero-writeup__desc">
+          <h1 class="hero__headline">Your financial lifestyle app</h1>
+          <p class="hero__description">
             Experience seamless accessibility to pay bills effortlessly, own a
             Virtual Dollar Card, convert excess Airtime to Cash, and enjoy Awoof
             Data services.
           </p>
-          <div class="hero-writeup__buttons">
-            <a href="" aria-hidden="true" aria-label="Get it on Google Play">
+          <div class="hero__buttons">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.figur.app"
+              class="hero__button hero__button--google"
+            >
               <svg
                 width="140"
                 height="42"
                 viewBox="-9 0 274 274"
                 xmlns="http://www.w3.org/2000/svg"
-                aria-label="Google Play"
+                aria-hidden="true"
+                focusable="false"
               >
                 <path
                   d="M188.813 178.875c32.459-17.823 57.067-31.404 59.188-32.459 6.785-3.609 13.792-13.159 0-20.577-4.453-2.332-28.428-15.491-59.188-32.459l-42.642 43.064 42.642 42.431z"
@@ -113,41 +117,48 @@
                   fill="#00D3FF"
                 />
               </svg>
-              <div class="btn-info">
+              <div class="hero__button-text">
                 <p>Get in on</p>
                 <p>Google Play</p>
               </div>
             </a>
             <a
-              href=""
-              aria-hidden="true"
-              aria-label="Download on the App Store"
+              href="https://apps.apple.com/app/figur/id123456789"
+              class="hero__button hero__button--apple"
             >
               <svg
                 width="40"
                 height="40"
                 viewBox="0 0 22.773 22.773"
                 xmlns="http://www.w3.org/2000/svg"
-                aria-label="Apple"
+                aria-hidden="true"
+                focusable="false"
               >
                 <path
                   fill="#ffffff"
                   d="M15.769 0c.053 0 .106 0 .162 0 .13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zM20.67 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.186 2.282 1.454 3.558 3.038 4.31z"
                 />
               </svg>
-              <div class="btn-info">
+              <div class="hero__button-text">
                 <p>Download on the</p>
                 <p>App Store</p>
               </div>
             </a>
           </div>
-        </section>
-        <section class="hero-video">
-          <video>
-            <source />
+        </div>
+        <div class="hero__media">
+          <video
+            controls
+            preload="metadata"
+            aria-label="Figur app demonstration video"
+            poster="path/to/image/jpg"
+          >
+            <source src="path/to/vid.mp4" type="video/mp4" />
+            <source src="path/to/vid.webm" type="video/webm" />
+            <p>Your browser doesn't supoort HTML5 video</p>
           </video>
-        </section>
-      </section>
+        </div>
+      </div>
     </main>
   </body>
 </html>
