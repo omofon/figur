@@ -554,6 +554,11 @@
       padding-inline: calc(var(--spacing) * 20);
     }
   }
+  .lg\:px-25 {
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 25);
+    }
+  }
   .lg\:pt-30 {
     @media (width >= 64rem) {
       padding-top: calc(var(--spacing) * 30);
@@ -591,6 +596,11 @@
   .xl\:px-25 {
     @media (width >= 80rem) {
       padding-inline: calc(var(--spacing) * 25);
+    }
+  }
+  .xl\:px-40 {
+    @media (width >= 80rem) {
+      padding-inline: calc(var(--spacing) * 40);
     }
   }
 }
