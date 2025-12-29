@@ -5,7 +5,9 @@
 
   /* Colors */
   --color-primary-blue: hsl(221, 100%, 50%);
+  --color-blue-hover: hsl(221, 90%, 45%);
   --color-primary-navy: hsl(216, 94%, 21%);
+  --color-navy-hover: hsl(216, 85%, 28%);
   --color-dark-blue: hsl(216, 71%, 14%);
   --color-medium-gray: hsl(220, 9%, 46%);
   --color-teal: hsl(161, 94%, 30%);
