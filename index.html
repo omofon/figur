@@ -17,120 +17,123 @@
   <body class="flex flex-col bg-white min-h-screen">
     <!-- HEADER SECTION -->
     <header
-      class="flex justify-between items-center w-full px-5 sm:px-10 md:px-15 lg:px-20 xl:px-25 py-4 fixed inset-x-0 z-50 bg-white shadow-2xs"
+      class="fixed inset-x-0 z-50 bg-white shadow-2xs px-5 sm:px-10 md:px-15 lg:px-20 xl:px-25 py-4"
     >
-      <!-- Nav Title -->
-      <a href="/" class="nav-title flex items-center gap-2">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          fill="#0052FF"
-          role="img"
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-          class=""
-        >
-          <title id="logo-title">figur logo</title>
-          <path
-            d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z"
-          />
-        </svg>
-        <span class="text-4xl font-extrabold text-primary-navy">figur</span>
-      </a>
-
-      <!-- Hamburger (for screens < 768px) -->
-      <button class="md:hidden">
-        <svg
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-          fill="#001B44"
-          role="button"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4 7L7 7M20 7L11 7"
-            stroke="#001b44"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-          <path
-            d="M20 17H17M4 17L13 17"
-            stroke="#001b44"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-          <path
-            d="M4 12H7L20 12"
-            stroke="#001b44"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-        </svg>
-      </button>
-
-      <!-- Nav List -->
-      <nav id="navbar" aria-label="Main navigation" class="hidden md:flex">
-        <ul class="flex gap-10">
-          <li>
-            <button
-              aria-expanded="false"
-              aria-haspopup="menu"
-              id="individual-button"
-              class="text-medium-gray hover:text-dark-blue cursor-pointer flex items-center"
+      <div class="flex items-center w-full">
+        <!-- Left: Logo + Nav -->
+        <div class="flex items-center gap-25">
+          <!-- Nav Title -->
+          <a href="/" class="flex items-center gap-2">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="#0052FF"
+              role="img"
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              class=""
             >
-              Individual
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M7 10L12 15L17 10"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <!-- Individual Menu -->
-              <!-- <ul id="individual-menu" role="menu" aria-labelledby="individual-button"></ul> -->
-            </button>
-          </li>
-          <li>
-            <a
-              href="/business"
-              class="text-medium-gray hover:text-dark-blue cursor-pointer"
-              >Business</a
-            >
-          </li>
-          <li>
-            <a
-              href="/blog"
-              class="text-medium-gray hover:text-dark-blue cursor-pointer"
-              >Blog</a
-            >
-          </li>
-        </ul>
-      </nav>
+              <title id="logo-title">figur logo</title>
+              <path
+                d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z"
+              />
+            </svg>
+            <span class="text-4xl font-extrabold text-primary-navy">figur</span>
+          </a>
 
-      <!-- Nav CTA -->
-      <div class="nav-buttons space-x-2 hidden md:flex">
-        <a
-          href="/login"
-          class="bg-primary-blue text-white px-4 py-2 rounded-full cursor-pointer hover:bg-blue-hover"
-          >Login</a
-        >
-        <a
-          href="/signup"
-          class="bg-primary-navy text-white px-4 py-2 rounded-full cursor-pointer hover:bg-navy-hover"
-          >Sign Up</a
-        >
+          <!-- Desktop Nav  -->
+          <nav id="navbar" aria-label="Main navigation" class="hidden md:flex">
+            <ul class="flex gap-10">
+              <li>
+                <button
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  id="individual-button"
+                  class="flex items-center text-medium-gray hover:text-dark-blue"
+                >
+                  Individual
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7 10L12 15L17 10"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <!-- Individual Menu -->
+                  <!-- <ul id="individual-menu" role="menu" aria-labelledby="individual-button"></ul> -->
+                </button>
+              </li>
+              <li>
+                <a
+                  href="/business"
+                  class="text-medium-gray hover:text-dark-blue"
+                  >Business</a
+                >
+              </li>
+              <li>
+                <a href="/blog" class="text-medium-gray hover:text-dark-blue"
+                  >Blog</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Right: CTAs -->
+        <div class="hidden md:flex items-center space-x-2 ml-auto">
+          <a
+            href="/login"
+            class="bg-primary-blue text-white px-4 py-2 rounded-full hover:bg-blue-hover"
+            >Login</a
+          >
+          <a
+            href="/signup"
+            class="bg-primary-navy text-white px-4 py-2 rounded-full hover:bg-navy-hover"
+            >Sign Up</a
+          >
+        </div>
+
+        <!-- Mobile Hamburger  -->
+        <button class="md:hidden ml-auto">
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="#001B44"
+            role="button"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 7L7 7M20 7L11 7"
+              stroke="#001b44"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M20 17H17M4 17L13 17"
+              stroke="#001b44"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <path
+              d="M4 12H7L20 12"
+              stroke="#001b44"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
       </div>
     </header>
 
