@@ -12,6 +12,21 @@
   --color-medium-gray: hsl(220, 9%, 46%);
   --color-teal: hsl(161, 94%, 30%);
   --color-mint: hsl(152, 81%, 96%);
+
+  --breakpoint-xmd: 850px;
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  --animate-appear: appear 0.2s ease-out forwards;
 }
 
 @layer base {

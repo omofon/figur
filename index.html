@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,7 +19,7 @@
     <header
       class="fixed inset-x-0 z-50 bg-white shadow-2xs px-5 sm:px-10 md:px-15 lg:px-25 xl:px-40 py-4"
     >
-      <div class="flex items-center w-full">
+      <div class="flex items-center w-full relative">
         <!-- Left: Logo + Nav -->
         <div class="flex items-center gap-25">
           <!-- Nav Title -->
@@ -46,7 +46,7 @@
           <!-- Desktop Nav  -->
           <nav id="navbar" aria-label="Main navigation" class="hidden md:flex">
             <ul class="flex gap-10">
-              <li>
+              <li class="relative">
                 <button
                   aria-expanded="false"
                   aria-haspopup="menu"
@@ -70,9 +70,9 @@
                       stroke-linejoin="round"
                     />
                   </svg>
-                  <!-- Individual Menu -->
-                  <!-- <ul id="individual-menu" role="menu" aria-labelledby="individual-button"></ul> -->
                 </button>
+                <!-- Individual Dropdown -->
+                <div></div>
               </li>
               <li>
                 <a
@@ -105,7 +105,7 @@
         </div>
 
         <!-- Mobile Hamburger  -->
-        <button class="md:hidden ml-auto">
+        <button class="md:hidden block p-2 ml-auto">
           <svg
             width="32"
             height="32"
@@ -134,12 +134,38 @@
             />
           </svg>
         </button>
+
+        <!-- Mobile Dropdown Nav -->
+        <div
+          class="hidden absolute top-full left-0 z-30 w-full bg-white shadow-lg flex-col items-center py-6 gap-6 md:hidden animate-appear"
+        >
+          <div class="flex flex-col items-center gap-4 text-xl font-medium">
+            <a href="#">Individual</a>
+            <a href="#">Business</a>
+            <a href="#">Blog</a>
+          </div>
+        </div>
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-5"
+        >
+          <a
+            href="/login"
+            class="w-full sm:w-auto text-center bg-primary-blue text-white px-8 py-3 rounded-full font-bold"
+            >Login</a
+          >
+          <a
+            href="/signup"
+            class="w-full sm:w-auto text-center bg-primary-navy text-white px-8 py-3 rounded-full font-bold"
+            >Sign Up</a
+          >
+        </div>
       </div>
     </header>
 
+    <!-- MAIN -->
     <main
       id="main-content"
-      class="pt-30 md:pt-40 lg:pt-30 px-5 sm:px-10 md:px-15 lg:px-25 xl:px-40"
+      class="pt-32 md:pt-44 px-6 sm:px-10 md:px-15 lg:px-25 xl:px-40"
     >
       <!-- HERO SECTION -->
       <section
