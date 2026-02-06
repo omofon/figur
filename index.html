@@ -269,9 +269,12 @@
     </header>
 
     <!-- MAIN SECTION -->
-    <main class="pt-24 md: px-6 sm:px-10 md:px-15 lg:px-25 xl:px-40">
+    <main
+      class="pt-24 px-6 sm:px-10 md:px-15 lg:px-25 xl:px-40 flex flex-col gap-20"
+    >
+      <!-- HERO SECTION -->
       <section
-        class="flex flex-col justify-center gap-15 lg:flex-row sm:gap-20 lg:h-screen"
+        class="flex flex-col justify-center gap-15 lg:flex-row sm:gap-20"
       >
         <div
           class="flex flex-col items-center lg:items-start mt-10 lg:mt-20 text-center lg:text-start gap-8 lg:w-[60%]"
@@ -394,13 +397,54 @@
         </div>
       </section>
 
+      <!-- SERVICES SECTION -->
       <section class="flex flex-col items-center justify-center">
-        <div class="w-fit text-wrap px-8 pb-15 pt-20">
-          <h2 class="text-center text-2xl font-bold">
-            Transforming the way people pay, work, play and live
-          </h2>
+        <h2 class="text-center text-2xl font-bold px-10 mb-14">
+          Transforming the way people pay, work, play and live
+        </h2>
+        <!-- GRID LAYOUT -->
+        <div
+          role="services-grid"
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
+        >
+          <!-- First Row -->
+          <div
+            class="md:col-span-3 relative overflow-hidden bg-[#F3E8FF] rounded-3xl p-8 min-h-125 flex flex-col justify-between group"
+          >
+            <div class="max-w-[280px]">
+              <span
+                class="text-xs font-bold uppercase tracking-widest text-gray-500"
+                >Virtual Card</span
+              >
+              <h3
+                class="text-3xl font-extrabold text-primary-navy mt-4 leading-tight"
+              >
+                Shop locally & Pay globally with Figur USD Card
+              </h3>
+            </div>
+            <div class="relative mt-8 self-center">
+              <img
+                src="dollar-card-hand.png"
+                alt="Hand holding card"
+                class="w-full max-w-[320px] transform group-hover:scale-105 transition-transform duration-500"
+              />
+              <img
+                src="amazon.svg"
+                class="absolute -top-4 -left-4 w-10 h-10 shadow-lg rounded-full bg-white p-2"
+              />
+              <img
+                src="netflix.svg"
+                class="absolute top-1/2 -right-6 w-10 h-10 shadow-lg rounded-full bg-white p-2"
+              />
+            </div>
+          </div>
         </div>
       </section>
+
+      <!-- PARTNERS SECTION -->
+       <section>
+        
+       </section>
     </main>
   </body>
 </html>
