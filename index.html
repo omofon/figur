@@ -17,13 +17,11 @@
   <body class="flex flex-col bg-white min-h-screen">
     <!-- HEADER SECTION -->
     <header
-      class="fixed inset-x-0 z-50 bg-white shadow-2xs px-5 sm:px-10 md:px-15 lg:px-25 xl:px-40 py-4"
+      class="fixed top-0 inset-x-0 z-50 bg-white shadow-2xs px-5 sm:px-10 md:px-15 lg:px-25 xl:px-40 py-4"
     >
       <div class="flex items-center w-full relative">
-        <!-- Left: Logo + Nav -->
-        <div class="flex items-center gap-25">
-          <!-- Nav Title -->
-          <a href="/" class="flex items-center gap-2">
+        <div class="flex items-center justify-between gap-10">
+          <a href="/" class="flex items-center mr-5 gap-2">
             <svg
               width="32"
               height="32"
@@ -31,9 +29,7 @@
               fill="#0052FF"
               role="img"
               aria-hidden="true"
-              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              class=""
             >
               <title id="logo-title">figur logo</title>
               <path
@@ -43,24 +39,29 @@
             <span class="text-4xl font-extrabold text-primary-navy">figur</span>
           </a>
 
-          <!-- Desktop Nav  -->
-          <nav id="navbar" aria-label="Main navigation" class="hidden md:flex">
+          <nav
+            id="navbar"
+            aria-label="Main navigation"
+            class="hidden md:flex items-center gap-3"
+          >
             <ul class="flex gap-10">
-              <li class="relative">
+              <li class="relative group">
                 <button
                   aria-expanded="false"
                   aria-haspopup="menu"
+                  aria-controls="individual-menu"
                   id="individual-button"
-                  class="flex items-center text-medium-gray hover:text-dark-blue"
+                  class="flex items-center gap-1 text-medium-gray hover:text-dark-blue font-medium cursor-pointer text-base"
                 >
                   Individual
                   <svg
-                    width="24"
-                    height="24"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     aria-hidden="true"
+                    class="mt-0.5"
                   >
                     <path
                       d="M7 10L12 15L17 10"
@@ -71,8 +72,116 @@
                     />
                   </svg>
                 </button>
-                <!-- Individual Dropdown -->
-                <div></div>
+                <div
+                  id="individual-menu"
+                  role="menu"
+                  aria-labelledby="individual-button"
+                  class="absolute top-full left-0 z-30 hidden group-hover:block animate-appear"
+                >
+                  <a
+                    href="/products/virtual-dollar-card"
+                    role="menuitem"
+                    class="flex gap-4 items-start group/item"
+                  >
+                    <div
+                      class="h-11 w-11 shrink-0 bg-[#FCE7D2] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./src/images/icons/dollar-card.svg"
+                        alt=""
+                        class="w-6 h-6"
+                      />
+                    </div>
+                    <div class="-mt-1">
+                      <p
+                        class="font-bold leading-8 text-primary-navy group-hover/item:text-primary-blue transition-colors"
+                      >
+                        Dollar Card
+                      </p>
+                      <p class="text-sm text-gray-500">
+                        Shop locally & Pay globally
+                      </p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="/products/airtime-to-cash"
+                    role="menuitem"
+                    class="flex gap-4 items-start group/item"
+                  >
+                    <div
+                      class="h-11 w-11 shrink-0 bg-[#D4F5D4] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./src/images/icons/airtime.svg"
+                        alt=""
+                        class="w-6 h-6"
+                      />
+                    </div>
+                    <div class="-mt-1">
+                      <p
+                        class="font-bold leading-8 text-primary-navy group-hover/item:text-primary-blue transition-colors"
+                      >
+                        Airtime to cash
+                      </p>
+                      <p class="text-sm text-gray-500">
+                        Convert airtime to cash instantly
+                      </p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="/products/gift-card"
+                    role="menuitem"
+                    class="flex gap-4 items-start group/item"
+                  >
+                    <div
+                      class="h-11 w-11 shrink-0 bg-[#E6F0FF] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./src/images/icons/gift-card.svg"
+                        alt=""
+                        class="w-6 h-6"
+                      />
+                    </div>
+                    <div class="-mt-1">
+                      <p
+                        class="font-bold leading-8 text-primary-navy group-hover/item:text-primary-blue transition-colors"
+                      >
+                        Gift Card
+                      </p>
+                      <p class="text-sm text-gray-500">
+                        Purchase over 5,000+ gift cards
+                      </p>
+                    </div>
+                  </a>
+
+                  <a
+                    href="/products/pay-bills"
+                    role="menuitem"
+                    class="flex gap-4 items-start group/item"
+                  >
+                    <div
+                      class="h-11 w-11 shrink-0 bg-[#D7F7F8] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        src="./src/images/icons/bills.svg"
+                        alt=""
+                        class="w-6 h-6"
+                      />
+                    </div>
+                    <div class="-mt-1">
+                      <p
+                        class="font-bold leading-8 text-primary-navy group-hover/item:text-primary-blue transition-colors"
+                      >
+                        Pay bills
+                      </p>
+                      <p class="text-sm text-gray-500">
+                        Buy Cheap Data, Electricity, TV, Airtime & more
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </li>
               <li>
                 <a
@@ -90,7 +199,6 @@
           </nav>
         </div>
 
-        <!-- Right: CTAs -->
         <div class="hidden md:flex items-center space-x-2 ml-auto">
           <a
             href="/login"
@@ -104,7 +212,6 @@
           >
         </div>
 
-        <!-- Mobile Hamburger  -->
         <button class="md:hidden block p-2 ml-auto">
           <svg
             width="32"
@@ -135,7 +242,6 @@
           </svg>
         </button>
 
-        <!-- Mobile Dropdown Nav -->
         <div
           class="hidden absolute top-full left-0 z-30 w-full bg-white shadow-lg flex-col items-center py-6 gap-6 md:hidden animate-appear"
         >
@@ -144,38 +250,32 @@
             <a href="#">Business</a>
             <a href="#">Blog</a>
           </div>
-        </div>
-        <div
-          class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-5"
-        >
-          <a
-            href="/login"
-            class="w-full sm:w-auto text-center bg-primary-blue text-white px-8 py-3 rounded-full font-bold"
-            >Login</a
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full px-5"
           >
-          <a
-            href="/signup"
-            class="w-full sm:w-auto text-center bg-primary-navy text-white px-8 py-3 rounded-full font-bold"
-            >Sign Up</a
-          >
+            <a
+              href="/login"
+              class="w-full sm:w-auto text-center bg-primary-blue text-white px-8 py-3 rounded-full font-bold"
+              >Login</a
+            >
+            <a
+              href="/signup"
+              class="w-full sm:w-auto text-center bg-primary-navy text-white px-8 py-3 rounded-full font-bold"
+              >Sign Up</a
+            >
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- MAIN -->
-    <main
-      id="main-content"
-      class="pt-32 md:pt-44 px-6 sm:px-10 md:px-15 lg:px-25 xl:px-40"
-    >
-      <!-- HERO SECTION -->
+    <!-- MAIN SECTION -->
+    <main class="pt-24 md: px-6 sm:px-10 md:px-15 lg:px-25 xl:px-40">
       <section
         class="flex flex-col justify-center gap-15 lg:flex-row sm:gap-20 lg:h-screen"
       >
-        <!-- Hero Content -->
         <div
           class="flex flex-col items-center lg:items-start mt-10 lg:mt-20 text-center lg:text-start gap-8 lg:w-[60%]"
         >
-          <!-- Hero highlight -->
           <div
             class="hero__highlight py-3 px-4 rounded-full bg-mint inline-flex border border-[#C4EAEB]"
           >
@@ -196,19 +296,16 @@
               />
             </div>
           </div>
-          <!-- Hero headline -->
           <h1
             class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold lg:font-extrabold"
           >
             Your financial lifestyle app
           </h1>
-          <!-- Hero description -->
           <p class="text-base">
             Experience seamless accessibility to pay bills effortlessly, own a
             Virtual Dollar Card, convert excess Airtime to Cash, and enjoy Awoof
             Data services.
           </p>
-          <!-- Hero buttons -->
           <div class="flex flex-row gap-5 items-start text-start">
             <a
               href="https://play.google.com/store/apps/details?id=com.figur.app"
@@ -277,9 +374,8 @@
           </div>
         </div>
 
-        <!-- Hero Media -->
         <div
-          class="relative w-full max-w-105 aspect-3/4 rounded-3xl overflow-hidden bg-black self-center lg:self-start mb-10"
+          class="relative w-full max-w-105 aspect-3/4 rounded-3xl overflow-hidden bg-black self-center lg:self-start"
         >
           <video
             controls
@@ -295,6 +391,14 @@
             <source src="./src/videos/demo.webm" type="video/webm" />
             <p>Your browser doesn't support HTML5 video</p>
           </video>
+        </div>
+      </section>
+
+      <section class="flex flex-col items-center justify-center">
+        <div class="w-fit text-wrap px-8 pb-15 pt-20">
+          <h2 class="text-center text-2xl font-bold">
+            Transforming the way people pay, work, play and live
+          </h2>
         </div>
       </section>
     </main>
