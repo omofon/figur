@@ -269,12 +269,10 @@
     </header>
 
     <!-- MAIN SECTION -->
-    <main
-      class="pt-24 px-6 sm:px-10 md:px-15 lg:px-25 xl:px-40 flex flex-col gap-20"
-    >
+    <main class="pt-24 flex flex-col gap-20">
       <!-- HERO SECTION -->
       <section
-        class="flex flex-col justify-center gap-15 lg:flex-row sm:gap-20"
+        class="container-padding flex flex-col justify-center gap-15 lg:flex-row sm:gap-20"
       >
         <div
           class="flex flex-col items-center lg:items-start mt-10 lg:mt-20 text-center lg:text-start gap-8 lg:w-[60%]"
@@ -398,7 +396,9 @@
       </section>
 
       <!-- SERVICES SECTION -->
-      <section class="flex flex-col items-center justify-center">
+      <section
+        class="container-padding flex flex-col items-center justify-center"
+      >
         <h2 class="text-center text-2xl font-bold px-10 mb-14">
           Transforming the way people pay, work, play and live
         </h2>
@@ -443,7 +443,7 @@
 
       <!-- PARTNERS SECTION -->
       <section
-        class="flex flex-col lg:flex-row gap-8 items-center py-5 overflow-hidden"
+        class="container-padding flex flex-col lg:flex-row gap-8 items-center py-5 overflow-hidden"
       >
         <span
           class="shrink-0 text-base font-bold text-primary-navy whitespace-nowrap px-4"
@@ -521,7 +521,137 @@
         </div>
       </section>
 
-      
+      <!-- BUSINESS FEATURES SECTION -->
+      <section
+        class="container-padding bg-primary-navy flex flex-col gap-10 pt-16 md:pt-24 lg:pt-32 pb-0"
+      >
+        <!-- Title with Image -->
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center md:border-b md:border-b-gray-700/40 relative"
+        >
+          <!-- Left  -->
+          <div
+            class="flex flex-col gap-6 items-start text-left max-w-xl pb-10 lg:pb-20"
+          >
+            <h2
+              class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1]"
+            >
+              Your Partner for business
+            </h2>
+            <p class="leading-relaxed">
+              It is simple and easy to take control of your money across all
+              platforms, in real-time. Using Figur, you can control all aspects
+              of your finances.
+            </p>
+            <button
+              class="px-8 py-3 bg-white rounded-full text-primary-navy hover:bg-gray-300 cursor-pointer transition-all"
+            >
+              Get Started
+            </button>
+          </div>
+
+          <!-- Right image -->
+          <div class="hidden lg:block absolute right-0 bottom-0 w-1/2 h-full">
+            <img
+              src="src/images/mobile-app.png"
+              alt="Mobile app dashboard"
+              class="absolute bottom-0 right-0 w-full max-w-none object-contain origin-bottom scale-x-125 scale-y-125 lg:scale-y-150"
+            />
+          </div>
+        </div>
+
+        <!-- Features grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="features-card">
+            <div class="w-20 h-20 mb-8 mx-auto">
+              <img
+                src="src/images/features/bouncy-to-do-in-progress-and-done-columns-of-the-kanban-board.gif"
+                alt="Bouncy to-do in-progress and done columns of the kanban board"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3
+              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+            >
+              Invoicing & Revenue Tracking Tools
+            </h3>
+          </div>
+
+          <div class="features-card">
+            <div class="w-20 h-20 mb-8 mx-auto">
+              <img
+                src="src/images/features/bouncy-calendar-with-marked-day-and-pencil.gif"
+                alt="Bouncy calendar with marked day and pencil"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3
+              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+            >
+              Expense Management
+            </h3>
+          </div>
+
+          <div class="features-card">
+            <div class="w-20 h-20 mb-8 mx-auto">
+              <img
+                src="src/images/features/bouncy-gears-and-wrench.gif"
+                alt="Bouncy gears and wrench"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3
+              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+            >
+              Vendor Management
+            </h3>
+          </div>
+          <div class="features-card">
+            <div class="w-20 h-20 mb-8 mx-auto">
+              <img
+                src="src/images/features/bouncy-house-and-speech-bubbles-with-a-dollar-sign-and-a-key.gif"
+                alt="Bouncy house and sppech bubbles with a dollar sign and a key"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3
+              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+            >
+              Dedicated Business Virtual Account
+            </h3>
+          </div>
+
+          <div class="features-card">
+            <div class="w-20 h-20 mb-8 mx-auto">
+              <img
+                src="src/images/features/bouncy-mobile-marketing-with-megaphone-new-message-and-social-network-icons.gif"
+                alt="Bouncy mobile marketing with megaphone"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3
+              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+            >
+              Instant online web Store Integration
+            </h3>
+          </div>
+
+          <div class="features-card">
+            <div class="w-20 h-20 mb-8 mx-auto">
+              <img
+                src="src/images/features/bouncy-chat-with-a-support-operator-on-the-phone.gif"
+                alt="Bouncy chat with a support operator on the phone"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <h3
+              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+            >
+              Real-time Customer Support
+            </h3>
+          </div>
+        </div>
+      </section>
     </main>
   </body>
 </html>
