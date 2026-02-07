@@ -36,6 +36,7 @@
   }
 
   --animate-appear: appear 0.2s ease-out forwards;
+  --animate-scroll: scroll 20s infinite linear;
 }
 
 @layer base {

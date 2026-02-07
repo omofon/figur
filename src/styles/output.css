@@ -55,6 +55,7 @@
     --color-teal: hsl(161, 94%, 30%);
     --color-mint: hsl(152, 81%, 96%);
     --animate-appear: appear 0.2s ease-out forwards;
+    --animate-scroll: scroll 20s infinite linear;
   }
 }
 @layer base {
@@ -314,9 +315,6 @@
   .h-6 {
     height: calc(var(--spacing) * 6);
   }
-  .h-8 {
-    height: calc(var(--spacing) * 8);
-  }
   .h-10 {
     height: calc(var(--spacing) * 10);
   }
@@ -350,9 +348,6 @@
   .w-auto {
     width: auto;
   }
-  .w-fit {
-    width: fit-content;
-  }
   .w-full {
     width: 100%;
   }
@@ -368,9 +363,6 @@
   .flex-shrink {
     flex-shrink: 1;
   }
-  .shrink {
-    flex-shrink: 1;
-  }
   .shrink-0 {
     flex-shrink: 0;
   }
@@ -382,6 +374,9 @@
   }
   .animate-appear {
     animation: var(--animate-appear);
+  }
+  .animate-scroll {
+    animation: var(--animate-scroll);
   }
   .cursor-pointer {
     cursor: pointer;
@@ -398,9 +393,6 @@
   .flex-row {
     flex-direction: row;
   }
-  .content-center {
-    align-content: center;
-  }
   .items-center {
     align-items: center;
   }
@@ -412,9 +404,6 @@
   }
   .justify-center {
     justify-content: center;
-  }
-  .justify-start {
-    justify-content: flex-start;
   }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
@@ -462,9 +451,6 @@
   .overflow-hidden {
     overflow: hidden;
   }
-  .overflow-x-auto {
-    overflow-x: auto;
-  }
   .rounded-3xl {
     border-radius: var(--radius-3xl);
   }
@@ -478,15 +464,8 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
   }
-  .border-2 {
-    border-style: var(--tw-border-style);
-    border-width: 2px;
-  }
   .border-\[\#C4EAEB\] {
     border-color: #C4EAEB;
-  }
-  .border-primary-blue {
-    border-color: var(--color-primary-blue);
   }
   .bg-\[\#D4F5D4\] {
     background-color: #D4F5D4;
@@ -533,14 +512,6 @@
     @supports (background-image: linear-gradient(in lab, red, red)) {
       --tw-gradient-position: to right in oklab;
     }
-    background-image: linear-gradient(var(--tw-gradient-stops));
-  }
-  .bg-gradient-to-l {
-    --tw-gradient-position: to left in oklab;
-    background-image: linear-gradient(var(--tw-gradient-stops));
-  }
-  .bg-gradient-to-r {
-    --tw-gradient-position: to right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
   .from-white {
@@ -596,11 +567,14 @@
   .py-6 {
     padding-block: calc(var(--spacing) * 6);
   }
-  .py-12 {
-    padding-block: calc(var(--spacing) * 12);
-  }
   .pt-24 {
     padding-top: calc(var(--spacing) * 24);
+  }
+  .pr-1 {
+    padding-right: calc(var(--spacing) * 1);
+  }
+  .pr-10 {
+    padding-right: calc(var(--spacing) * 10);
   }
   .pr-12 {
     padding-right: calc(var(--spacing) * 12);
@@ -1118,6 +1092,14 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
 @layer properties {
