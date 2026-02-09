@@ -10,6 +10,7 @@
   --color-navy-hover: hsl(216, 85%, 28%);
   --color-dark-blue: hsl(216, 71%, 14%);
   --color-medium-gray: hsl(228, 15%, 48%);
+  --color-light-gray: #63748a;
   --color-teal: hsl(161, 94%, 30%);
   --color-mint: hsl(152, 81%, 96%);
 
@@ -35,7 +36,7 @@
     }
   }
 
-  --animate-appear: appear 0.2s ease-out forwards;
+  --animate-appear: appear 0.5s ease-out forwards;
   --animate-scroll: scroll 20s infinite linear;
 }
 
@@ -48,7 +49,8 @@
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5 {
     padding: 0;
     margin: 0;
     color: var(--color-primary-navy);
