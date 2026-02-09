@@ -75,8 +75,8 @@
 
   @media (min-width: 768px) {
     .container-padding {
-      padding-left: 8rem;
-      padding-right: 8rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
     }
   }
 
