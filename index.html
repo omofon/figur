@@ -17,7 +17,7 @@
   <body class="flex flex-col bg-white min-h-screen">
     <!-- HEADER SECTION -->
     <header
-      class="fixed top-0 inset-x-0 z-50 bg-white shadow-2xs px-5 sm:px-10 md:px-15 lg:px-25 xl:px-40 py-4"
+      class="fixed top-0 inset-x-0 z-50 bg-white shadow-2xs container-padding py-4"
     >
       <div class="flex items-center w-full relative">
         <div class="flex items-center justify-between gap-10">
@@ -42,7 +42,7 @@
           <nav
             id="navbar"
             aria-label="Main navigation"
-            class="hidden md:flex items-center gap-3"
+            class="hidden lg:flex items-center gap-3"
           >
             <ul class="flex gap-10">
               <li class="relative group">
@@ -72,7 +72,8 @@
                     />
                   </svg>
                 </button>
-                <div
+                <!-- Drop down menu - individual nav -->
+                <!-- <div
                   id="individual-menu"
                   role="menu"
                   aria-labelledby="individual-button"
@@ -181,7 +182,7 @@
                       </p>
                     </div>
                   </a>
-                </div>
+                </div> -->
               </li>
               <li>
                 <a
@@ -199,7 +200,7 @@
           </nav>
         </div>
 
-        <div class="hidden md:flex items-center space-x-2 ml-auto">
+        <div class="hidden lg:flex items-center space-x-2 ml-auto">
           <a
             href="/login"
             class="bg-primary-blue text-white px-4 py-2 rounded-full hover:bg-blue-hover"
@@ -212,7 +213,7 @@
           >
         </div>
 
-        <button class="md:hidden block p-2 ml-auto">
+        <button class="lg:hidden block p-2 ml-auto">
           <svg
             width="32"
             height="32"
@@ -243,7 +244,7 @@
         </button>
 
         <div
-          class="hidden absolute top-full left-0 z-30 w-full bg-white shadow-lg flex-col items-center py-6 gap-6 md:hidden animate-appear"
+          class="hidden absolute top-full left-0 z-30 w-full bg-white shadow-lg flex-col items-center py-6 gap-6 lg:hidden animate-appear"
         >
           <div class="flex flex-col items-center gap-4 text-xl font-medium">
             <a href="#">Individual</a>
@@ -269,7 +270,7 @@
     </header>
 
     <!-- MAIN SECTION -->
-    <main class="pt-24 flex flex-col gap-20">
+    <main class="pt-24 flex flex-col gap-16 md:gap-20">
       <!-- HERO SECTION -->
       <section
         class="container-padding flex flex-col justify-center gap-15 lg:flex-row sm:gap-20"
@@ -411,7 +412,7 @@
           <div
             class="md:col-span-3 relative overflow-hidden bg-[#F3E8FF] rounded-3xl p-8 min-h-125 flex flex-col justify-between group"
           >
-            <div class="max-w-[280px]">
+            <div class="max-w-70">
               <span
                 class="text-xs font-bold uppercase tracking-widest text-gray-500"
                 >Virtual Card</span
@@ -551,12 +552,14 @@
           </div>
 
           <!-- Right image -->
-          <div class="hidden lg:block absolute right-0 bottom-0 w-1/2 h-full">
-            <img
-              src="src/images/mobile-app.png"
-              alt="Mobile app dashboard"
-              class="absolute bottom-0 right-0 w-full max-w-none object-contain origin-bottom scale-x-125 scale-y-125 lg:scale-y-150"
-            />
+          <div class="relative h-full flex items-end justify-end">
+            <div class="relative w-full flex justify-end">
+              <img
+                src="src/images/mobile-app.png"
+                alt="Mobile app dashboard"
+                class="w-full h-auto object-contain origin-bottom lg:scale-x-[1.5] lg:scale-y-[1.7]"
+              />
+            </div>
           </div>
         </div>
 
@@ -652,6 +655,154 @@
           </div>
         </div>
       </section>
+
+      <!-- TESTIMONIAL SECTION -->
+      <section class="container-padding flex flex-col gap-10">
+        <!-- Testimonial header -->
+        <div class="flex flex-col items-center gap-6 px-10">
+          <h2 class="text-center text-3xl md:text-4xl font-bold px-10">
+            Customer Impressions
+          </h2>
+          <p class="text-sm text-center">
+            See what customers are saying to know if you would recommend Figur
+            to your network.
+          </p>
+        </div>
+        <!-- Testimonial Grid -->
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+          <article
+            class="break-inside-avoid bg-white p-8 flex flex-col gap-6 rounded-3xl border border-gray-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] mb-8"
+          >
+            <header class="flex items-center gap-4">
+              <div
+                class="h-12 w-12 shrink-0 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-lg"
+              >
+                T
+              </div>
+              <div class="flex flex-col">
+                <h4 class="font-bold text-sm">Titilope Alayaki</h4>
+                <span class="text-xs">⭐⭐⭐⭐⭐</span>
+              </div>
+            </header>
+            <p class="text-medium-gray text-sm">
+              "I've had seamless transactions since I've downloaded the app and
+              I've been able to use the virtual dollar card for transactions on
+              Alibaba and subscription payment on DSLR booth. It's a very easy
+              to use app with a user experience and a beautiful UI. I
+              recommend."
+            </p>
+          </article>
+
+          <article
+            class="break-inside-avoid bg-white p-8 flex flex-col gap-6 rounded-3xl border border-gray-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] mb-8"
+          >
+            <header class="flex items-center gap-4">
+              <div
+                class="h-12 w-12 shrink-0 rounded-full bg-teal-500 text-white flex items-center justify-center font-bold text-lg"
+              >
+                R
+              </div>
+              <div class="flex flex-col">
+                <h4 class="font-bold text-sm">Rita Usman</h4>
+                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+              </div>
+            </header>
+            <p class="text-gray-600 leading-relaxed text-base">
+              "The customer support is readily available, and the app's security
+              features are impressive, ensuring that customer data stays safe
+              and protected."
+            </p>
+          </article>
+
+          <article
+            class="break-inside-avoid bg-white p-8 flex flex-col gap-6 rounded-3xl border border-gray-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] mb-8"
+          >
+            <header class="flex items-center gap-4">
+              <div
+                class="h-12 w-12 shrink-0 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-lg"
+              >
+                B
+              </div>
+              <div class="flex flex-col">
+                <h4 class="font-bold text-sm">Benjamin Ijezie</h4>
+                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+              </div>
+            </header>
+            <p class="text-gray-600 leading-relaxed text-base">
+              "It's amazing how I get cashbacks for data and airtime purchases,
+              to think it is also an awoof package. WOW!!"
+            </p>
+          </article>
+
+          <article
+            class="break-inside-avoid bg-white p-8 flex flex-col gap-6 rounded-3xl border border-gray-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] mb-8"
+          >
+            <header class="flex items-center gap-4">
+              <div
+                class="h-12 w-12 shrink-0 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-lg"
+              >
+                B
+              </div>
+              <div class="flex flex-col">
+                <h4 class="font-bold text-sm">Barnabas Yakubu</h4>
+                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+              </div>
+            </header>
+            <p class="text-gray-600 leading-relaxed text-base">
+              "If you are looking for an app to pay your bills, send and receive
+              money, and even more in a jiffy, then Figur is the plug, I feel
+              Figur is simplicity and efficiency at it best!!"
+            </p>
+          </article>
+
+          <article
+            class="break-inside-avoid bg-white p-8 flex flex-col gap-6 rounded-3xl border border-gray-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] mb-8"
+          >
+            <header class="flex items-center gap-4">
+              <div
+                class="h-12 w-12 shrink-0 rounded-full bg-pink-500 text-white flex items-center justify-center font-bold text-lg"
+              >
+                E
+              </div>
+              <div class="flex flex-col">
+                <h4 class="font-bold text-sm">Enejim Glory</h4>
+                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+              </div>
+            </header>
+            <p class="text-gray-600 leading-relaxed text-base">
+              "I really do love this app it has a unique user interface which by
+              the way is very easy to navigate through it also offers very fast
+              transfer services. The cheap data feature it just awesome"
+            </p>
+          </article>
+
+          <article
+            class="break-inside-avoid bg-white p-8 flex flex-col gap-6 rounded-3xl border border-gray-100 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] mb-8"
+          >
+            <header class="flex items-center gap-4">
+              <div
+                class="h-12 w-12 shrink-0 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-lg"
+              >
+                B
+              </div>
+              <div class="flex flex-col">
+                <h4 class="font-bold text-sm">Benita Ogedi</h4>
+                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+              </div>
+            </header>
+            <p class="text-gray-600 leading-relaxed text-base">
+              "I used the figur app for two months and had a mostly positive
+              experience. I liked the clean and simple design of the app, and
+              the navigation was very intuitive. The feature that allowed me to
+              customize my experience was especially useful."
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="container-padding bg-primary-navy flex flex-col gap-10 py-16 md:py-24 lg:py-32"
+      ></section>
     </main>
   </body>
 </html>
