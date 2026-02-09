@@ -281,47 +281,45 @@
           class="flex flex-col items-center lg:items-start mt-10 lg:mt-20 text-center lg:text-start gap-8 lg:w-[60%]"
         >
           <div
-            class="hero__highlight py-3 px-4 rounded-full bg-mint inline-flex border border-[#C4EAEB]"
+            class="flex gap-3 items-center py-3 px-4 rounded-full bg-mint border border-[#C4EAEB]"
           >
             <span
-              class="text-primary-navy font-normal md:font-medium whitespace-nowrap"
+              class="text-primary-navy text-xs font-bold md:font-medium whitespace-nowrap"
               >More than a digital payment</span
             >
             <div
-              class="hero__bolt-ctn rounded-full bg-teal inline-flex p-1 ml-3"
+              class="hero__bolt-ctn rounded-full bg-teal inline-flex p-1"
               aria-hidden="true"
             >
               <img
-                width="16"
-                height="16"
+                width="12"
+                height="12"
                 src="https://img.icons8.com/material-outlined/24/FFFFFF/lightning-bolt--v1.png"
                 alt=""
                 role="presentation"
               />
             </div>
           </div>
-          <h1
-            class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold lg:font-extrabold"
-          >
+          <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold">
             Your financial lifestyle app
           </h1>
-          <p class="text-base">
+          <p class="text-sm">
             Experience seamless accessibility to pay bills effortlessly, own a
             Virtual Dollar Card, convert excess Airtime to Cash, and enjoy Awoof
             Data services.
           </p>
-          <div class="flex flex-row gap-5 items-start text-start">
+          <div
+            class="flex flex-row flex-nowrap gap-3 justify-center md:justify-start w-full"
+          >
             <a
               href="https://play.google.com/store/apps/details?id=com.figur.app"
-              class="bg-primary-navy p-3 rounded-md flex flex-row items-center gap-2 hover:bg-navy-hover"
+              class="bg-primary-navy px-4 py-3 rounded-md flex flex-row items-center gap-2 hover:bg-navy-hover shrink-0 whitespace-nowrap"
             >
               <svg
                 width="20"
                 height="20"
                 viewBox="-9 0 274 274"
                 xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-                focusable="false"
               >
                 <path
                   d="M188.813 178.875c32.459-17.823 57.067-31.404 59.188-32.459 6.785-3.609 13.792-13.159 0-20.577-4.453-2.332-28.428-15.491-59.188-32.459l-42.642 43.064 42.642 42.431z"
@@ -340,39 +338,29 @@
                   fill="#00D3FF"
                 />
               </svg>
-              <div class="flex flex-col">
-                <p class="text-xs lg:text-sm text-white leading-none">
-                  Get it on
-                </p>
-                <p class="text-sm lg:text-lg text-white font-semibold">
-                  Google Play
-                </p>
+              <div class="flex flex-col text-left">
+                <p class="text-xs text-white leading-none">Get it on</p>
+                <p class="text-sm text-white font-semibold">Google Play</p>
               </div>
             </a>
             <a
               href="https://apps.apple.com/app/figur/id123456789"
-              class="bg-primary-navy p-3 rounded-md flex flex-row items-center gap-2 hover:bg-navy-hover"
+              class="bg-primary-navy px-4 py-3 rounded-md flex flex-row items-center gap-2 hover:bg-navy-hover shrink-0 whitespace-nowrap"
             >
               <svg
                 width="20"
                 height="20"
                 viewBox="0 0 22.773 22.773"
                 xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-                focusable="false"
               >
                 <path
                   fill="#ffffff"
                   d="M15.769 0c.053 0 .106 0 .162 0 .13 1.606-.483 2.806-1.228 3.675-.731.863-1.732 1.7-3.351 1.573-.108-1.583.506-2.694 1.25-3.561C13.292.879 14.557.16 15.769 0zM20.67 16.716v.045c-.455 1.378-1.104 2.559-1.896 3.655-.723.995-1.609 2.334-3.191 2.334-1.367 0-2.275-.879-3.676-.903-1.482-.024-2.297.735-3.652.926h-.462c-.995-.144-1.798-.932-2.383-1.642-1.725-2.098-3.058-4.808-3.306-8.276v-1.019c.105-2.482 1.311-4.5 2.914-5.478.846-.52 2.009-.963 3.304-.765.555.086 1.122.276 1.619.464.471.181 1.06.502 1.618.485.378-.011.754-.208 1.135-.347 1.116-.403 2.21-.865 3.652-.648 1.733.262 2.963 1.032 3.723 2.22-1.466.933-2.625 2.339-2.427 4.74.186 2.282 1.454 3.558 3.038 4.31z"
                 />
               </svg>
-              <div class="flex flex-col">
-                <p class="text-xs lg:text-sm text-white leading-none">
-                  Download on the
-                </p>
-                <p class="text-sm lg:text-lg text-white font-semibold">
-                  App Store
-                </p>
+              <div class="flex flex-col text-left">
+                <p class="text-xs text-white leading-none">Download on the</p>
+                <p class="text-sm text-white font-semibold">App Store</p>
               </div>
             </a>
           </div>
@@ -402,7 +390,7 @@
       <section
         class="container-padding flex flex-col items-center justify-center"
       >
-        <h2 class="text-center text-2xl font-bold px-10 mb-14">
+        <h2 class="text-center text-2xl font-extrabold px-10 mb-14">
           Transforming the way people pay, work, play and live
         </h2>
         <!-- GRID LAYOUT -->
@@ -558,17 +546,17 @@
             class="flex flex-col gap-6 items-start text-left max-w-xl pb-10 lg:pb-20"
           >
             <h2
-              class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1]"
+              class="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.1]"
             >
               Your Partner for business
             </h2>
-            <p class="leading-relaxed">
+            <p class="leading-relaxed text-sm text-gray-300">
               It is simple and easy to take control of your money across all
               platforms, in real-time. Using Figur, you can control all aspects
               of your finances.
             </p>
             <button
-              class="px-5 py-2 bg-white rounded-full text-primary-navy hover:bg-gray-300 cursor-pointer transition-all"
+              class="px-5 py-2 bg-white rounded-full text-primary-navy text-sm hover:bg-gray-300 cursor-pointer transition-all"
             >
               Get Started
             </button>
@@ -597,7 +585,7 @@
               />
             </div>
             <h3
-              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+              class="text-white text-lg lg:text-base font-semibold leading-tight text-left w-full"
             >
               Invoicing & Revenue Tracking Tools
             </h3>
@@ -612,7 +600,7 @@
               />
             </div>
             <h3
-              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+              class="text-white text-lg lg:text-base font-semibold leading-tight text-left w-full"
             >
               Expense Management
             </h3>
@@ -627,7 +615,7 @@
               />
             </div>
             <h3
-              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+              class="text-white text-lg lg:text-base font-semibold leading-tight text-left w-full"
             >
               Vendor Management
             </h3>
@@ -641,7 +629,7 @@
               />
             </div>
             <h3
-              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+              class="text-white text-lg lg:text-base font-semibold leading-tight text-left w-full"
             >
               Dedicated Business Virtual Account
             </h3>
@@ -656,7 +644,7 @@
               />
             </div>
             <h3
-              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+              class="text-white text-lg lg:text-base font-semibold leading-tight text-left w-full"
             >
               Instant online web Store Integration
             </h3>
@@ -671,7 +659,7 @@
               />
             </div>
             <h3
-              class="text-white text-xl lg:text-base font-semibold leading-tight text-left w-full"
+              class="text-white text-lg lg:text-base font-semibold leading-tight text-left w-full"
             >
               Real-time Customer Support
             </h3>
@@ -704,7 +692,33 @@
               </div>
               <div class="flex flex-col">
                 <h4 class="font-bold text-sm">Titilope Alayaki</h4>
-                <span class="text-xs">⭐⭐⭐⭐⭐</span>
+                <div class="flex justify-left items-center gap-1">
+                  <img
+                    src="/src/images/logos/playstore.svg"
+                    alt="Google playstore icon"
+                    class="w-4 h-4 mr-0.5"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                </div>
               </div>
             </header>
             <p class="text-medium-gray text-sm">
@@ -727,7 +741,38 @@
               </div>
               <div class="flex flex-col">
                 <h4 class="font-bold text-sm">Rita Usman</h4>
-                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+                <div class="flex justify-left items-center gap-1">
+                  <img
+                    src="/src/images/logos/apple.svg"
+                    alt="Apple icon"
+                    class="w-4 h-4 mr-0.5"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                </div>
               </div>
             </header>
             <p class="text-gray-600 leading-relaxed text-base">
@@ -748,7 +793,33 @@
               </div>
               <div class="flex flex-col">
                 <h4 class="font-bold text-sm">Benjamin Ijezie</h4>
-                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+                <div class="flex justify-left items-center gap-1">
+                  <img
+                    src="/src/images/logos/apple.svg"
+                    alt="Apple icon"
+                    class="w-4 h-4 mr-0.5"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                </div>
               </div>
             </header>
             <p class="text-gray-600 leading-relaxed text-base">
@@ -768,7 +839,38 @@
               </div>
               <div class="flex flex-col">
                 <h4 class="font-bold text-sm">Barnabas Yakubu</h4>
-                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+                <div class="flex justify-left items-center gap-1">
+                  <img
+                    src="/src/images/logos/playstore.svg"
+                    alt="Google playstore icon"
+                    class="w-4 h-4 mr-0.5"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                </div>
               </div>
             </header>
             <p class="text-gray-600 leading-relaxed text-base">
@@ -789,7 +891,38 @@
               </div>
               <div class="flex flex-col">
                 <h4 class="font-bold text-sm">Enejim Glory</h4>
-                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+                <div class="flex justify-left items-center gap-1">
+                  <img
+                    src="/src/images/logos/apple.svg"
+                    alt="Apple icon"
+                    class="w-4 h-4 mr-0.5"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                </div>
               </div>
             </header>
             <p class="text-gray-600 leading-relaxed text-base">
@@ -810,7 +943,38 @@
               </div>
               <div class="flex flex-col">
                 <h4 class="font-bold text-sm">Benita Ogedi</h4>
-                <span class="text-sm">⭐⭐⭐⭐⭐</span>
+                <div class="flex justify-left items-center gap-1">
+                  <img
+                    src="/src/images/logos/playstore.svg"
+                    alt="Google playstore icon"
+                    class="w-4 h-4 mr-0.5"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                  <img
+                    src="/src/images/logos/star.svg"
+                    alt="Star icon"
+                    class="w-3 h-3"
+                  />
+                </div>
               </div>
             </header>
             <p class="text-gray-600 leading-relaxed text-base">
