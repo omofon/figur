@@ -95,6 +95,6 @@
   }
 
   .features-card {
-    @apply bg-[#15376F]/50 rounded-2xl p-8 flex flex-col items-start justify-between transition-all hover:bg-[#15376F]/80 hover:cursor-pointer h-full;
+    @apply bg-[#15376F] rounded-2xl p-8 flex flex-col items-start justify-between transition-all hover:bg-[#15376F]/80 hover:cursor-pointer h-full;
   }
 }
