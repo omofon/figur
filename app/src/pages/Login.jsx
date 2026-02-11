@@ -18,32 +18,36 @@ function Login() {
     <main className="flex min-h-screen flex-col lg:flex-row">
       {/* Left Section - 40% */}
       <section className="hidden lg:flex lg:basis-2/5 items-center justify-center bg-primary-blue lg:px-16 xl:px-25 relative overflow-hidden">
-        {/* Decorative background shapes (optional) */}
-        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-white/10 opacity-20 transform -skew-y-12 translate-y-20"></div>
-
         {/* Text Content */}
-        <div className="flex flex-col gap-6 z-10">
-          <div className="flex items-center gap-2 mb-4">
+        <div className="flex flex-col gap-8 z-10">
+          <div className="flex items-center gap-2 mb-2 max-w-100">
             <svg
-              width="32"
-              height="32"
+              width="24"
+              height="24"
               viewBox="0 0 24 24"
               fill="white"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z" />
             </svg>
-            <span className="text-2xl font-bold text-white tracking-tight">
-              figur
-            </span>
+            <span className="text-2xl font-bold text-white">figur</span>
           </div>
-          <h1 className="text-white font-bold text-4xl leading-tight max-w-sm">
+          <h1 className="text-white font-bold text-3xl 2xl:text-4xl leading-tight">
             More than a digital payment
           </h1>
-          <p className="text-white/80 text-lg leading-relaxed max-w-sm">
+          <p className="text-white text-xs leading-relaxed">
             Experience seamless accessibility to pay bills, open personal &
             business bank accounts, track revenue & more on one platform.
           </p>
+        </div>
+
+        {/* The Background SVG from your public folder */}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+          <img
+            src="/images/bg-feature.svg"
+            alt="Background cascade boxes"
+            className="w-full h-auto object-cover opacity-50"
+          />
         </div>
       </section>
 
