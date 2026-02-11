@@ -17,10 +17,10 @@ function Login() {
   return (
     <main className="flex min-h-screen flex-col lg:flex-row">
       {/* Left Section - 40% */}
-      <section className="hidden lg:flex lg:basis-2/5 items-center justify-center bg-primary-blue lg:px-16 xl:px-25 relative overflow-hidden">
+      <section className="hidden lg:flex lg:basis-2/5 items-center justify-center bg-primary-blue lg:pl-16 lg:pr-30 relative overflow-hidden">
         {/* Text Content */}
-        <div className="flex flex-col gap-8 z-10">
-          <div className="flex items-center gap-2 mb-2 max-w-100">
+        <div className="flex flex-col gap-8 z-10 max-w-80">
+          <div className="flex items-center gap-2 mb-2">
             <svg
               width="24"
               height="24"
@@ -42,7 +42,7 @@ function Login() {
         </div>
 
         {/* The Background SVG from your public folder */}
-        <div className="absolute bottom-0 left-0 w-full pointer-events-none">
+        <div className="absolute bottom-0 left-0 max-w-sm pointer-events-none">
           <img
             src="/images/bg-feature.svg"
             alt="Background cascade boxes"
