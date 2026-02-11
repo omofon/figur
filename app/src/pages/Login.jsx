@@ -55,8 +55,10 @@ function Login() {
       <section className="flex-1 lg:basis-3/5 bg-white flex flex-col items-center justify-center px-8 py-12">
         <div className="w-full max-w-md">
           <div className="mb-10 text-left">
-            <p className="text-gray-500 font-medium">Login</p>
-            <h2 className="text-2xl font-bold text-[#0D1B3E]">Welcome Back</h2>
+            <p className="text-primary-navy text-xs">Login</p>
+            <h2 className="text-lg font-medium text-primary-navy">
+              Welcome Back
+            </h2>
           </div>
 
           <form onSubmit={handleLogin} className="flex flex-col gap-6">
