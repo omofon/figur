@@ -2,17 +2,44 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { validateAuthForm } from "../utils/validation";
 
 function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+  const [errors, setErrors] = useState({});
 
   function toggleVisibility() {
     setIsVisible(!isVisible);
   }
 
-  function handleLogin(formData) {
+  async function handleLogin(formData) {
+    // Get the data from form
+    const data = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    // Run the utility validation
+    const { isValid, errors: validationErrors } = validateAuthForm(data, [
+      "email",
+      "password",
+    ]);
+
+    if (!isValid) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    try {
+      const user = { email: data.email };
+      await login(user);
+      navigate("/dashboard");
+    } catch (err) {
+      setErrors({ form: "Invalid credentials. Please try again." });
+    }
+
     const user = {
       email: formData.get("email"),
     };
@@ -68,9 +95,11 @@ function Login() {
             </h2>
           </div>
 
-          <form onSubmit={handleLogin} className="flex flex-col gap-3">
+          <form action={handleLogin} className="flex flex-col gap-3">
             {/* Email Field */}
-            <div className="relative border border-gray-200 rounded-lg focus-within:border-blue-600 transition-all">
+            <div
+              className={`relative border rounded-lg transition-all ${errors.email ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+            >
               <input
                 type="email"
                 name="email"
@@ -81,20 +110,37 @@ function Login() {
               <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
                 Email
               </label>
+
+              {/* Error Message - Far Right */}
+              {errors.email && (
+                <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
+                  {errors.email}
+                </span>
+              )}
             </div>
 
             {/* Password Field */}
-            <div className="relative border border-gray-200 rounded-lg focus-within:border-blue-600 transition-all">
+            <div
+              className={`relative mt-4 border rounded-lg transition-all ${errors.password ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+            >
               <input
                 type={isVisible ? "text" : "password"}
                 name="password"
                 placeholder=" "
-                className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
+                /* Added pr-10 so text doesn't overlap the eye icon or the error */
+                className="block px-4 pr-10 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
-              <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
+              <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
                 Password
               </label>
+
+              {/* Error Message - Far Right (Pushed left slightly to avoid the eye icon) */}
+              {errors.password && (
+                <span className="absolute right-10 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
+                  {errors.password}
+                </span>
+              )}
 
               <button
                 type="button"
@@ -142,8 +188,8 @@ function Login() {
 
             {/* Forgot Password Link */}
             <Link
-              to="/forgotpassword"
-              className="text-primary-navy font-semibold text-xs hover:underline transition-all"
+              to="/forgot-password"
+              className="text-primary-navy text-center font-semibold text-xs hover:underline transition-all"
             >
               Forgot Password
             </Link>

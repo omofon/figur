@@ -1,29 +1,249 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { validateAuthForm } from "../utils/validation";
 
 function Signup() {
-  const { signup } = useAuth();
+  const { login } = useAuth(); // Assuming logic is similar or update to your signup context
   const navigate = useNavigate();
+  const [isVisible, setIsVisible] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  function handleSignup(formData) {
-    const user = {
-      name: formData.get("name"),
+  function toggleVisibility() {
+    setIsVisible(!isVisible);
+  }
+
+  async function handleSignup(formData) {
+    const data = {
+      username: formData.get("username"),
       email: formData.get("email"),
+      password: formData.get("password"),
     };
 
-    signup(user);
-    navigate("/dashboard");
+    const { isValid, errors: validationErrors } = validateAuthForm(data, [
+      "username",
+      "email",
+      "password",
+    ]);
+
+    if (!isValid) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    try {
+      // Logic for account creation here
+      await login({ email: data.email });
+      navigate("/dashboard");
+    } catch (err) {
+      setErrors({ form: "Could not create account. Please try again." });
+    }
   }
 
   return (
-    <form action={handleSignup}>
-      <h2>Sign up</h2>
+    <main className="flex min-h-screen flex-col lg:flex-row">
+      {/* Left Section - 40% (Exact match to Login) */}
+      <section className="hidden lg:flex lg:basis-2/5 items-center justify-center bg-primary-blue lg:pl-16 lg:pr-30 relative overflow-hidden">
+        <div className="flex flex-col gap-8 z-10 max-w-80">
+          <div className="flex items-center gap-2 mb-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z" />
+            </svg>
+            <span className="text-2xl font-bold text-white">figur</span>
+          </div>
+          <h1 className="text-white font-bold text-3xl 2xl:text-4xl leading-tight">
+            More than a digital payment
+          </h1>
+          <p className="text-white text-xs leading-relaxed">
+            Experience seamless accessibility to pay bills, open personal &
+            business bank accounts, track revenue & more on one platform.
+          </p>
+        </div>
+        <div className="absolute bottom-0 left-0 max-w-sm pointer-events-none">
+          <img
+            src="/images/bg-feature.svg"
+            alt="Background"
+            className="w-full h-auto object-cover opacity-50"
+          />
+        </div>
+      </section>
 
-      <input name="name" placeholder="Name" required />
-      <input name="email" placeholder="Email" required />
+      {/* Right Section - 60% */}
+      <section className="flex-1 lg:basis-3/5 bg-white flex flex-col items-center justify-center px-8 py-12">
+        <div className="w-full max-w-md">
+          <div className="mb-10 text-left">
+            <p className="text-primary-navy text-xs">Register</p>
+            <h2 className="text-base font-medium text-primary-navy">
+              Create an Account
+            </h2>
+          </div>
 
-      <button type="submit">Create account</button>
-    </form>
+          <form action={handleSignup} className="flex flex-col gap-3">
+            {/* Username Field */}
+            <div
+              className={`relative border rounded-lg transition-all ${errors.username ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+            >
+              <input
+                type="text"
+                name="username"
+                placeholder=" "
+                className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
+                required
+              />
+              <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
+                Username
+              </label>
+              {errors.username && (
+                <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
+                  {errors.username}
+                </span>
+              )}
+            </div>
+
+            {/* Email Field */}
+            <div
+              className={`relative border rounded-lg transition-all ${errors.email ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder=" "
+                className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
+                required
+              />
+              <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
+                Email
+              </label>
+              {errors.email && (
+                <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
+                  {errors.email}
+                </span>
+              )}
+            </div>
+
+            {/* Password Field */}
+            <div
+              className={`relative border rounded-lg transition-all ${errors.password ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+            >
+              <input
+                type={isVisible ? "text" : "password"}
+                name="password"
+                placeholder=" "
+                className="block px-4 pr-10 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
+                required
+              />
+              <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
+                Password
+              </label>
+              {errors.password && (
+                <span className="absolute right-10 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
+                  {errors.password}
+                </span>
+              )}
+              <button
+                type="button"
+                onClick={toggleVisibility}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer"
+              >
+                {isVisible ? (
+                  <svg
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    width="18"
+                    height="18"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full mt-4 bg-[#2260FF] text-white py-3 rounded-full text-sm hover:bg-blue-600 transition-colors shadow shadow-blue-200 hover:cursor-pointer"
+            >
+              Sign Up
+            </button>
+
+            {/* Social Sign Up Section */}
+            <div className="mt-6">
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center w-full gap-4">
+                  <div className="flex-1 border-t border-gray-200"></div>
+                  <span className="text-[10px] text-gray-400 uppercase tracking-wider">
+                    or sign up using
+                  </span>
+                  <div className="flex-1 border-t border-gray-200"></div>
+                </div>
+
+                <div className="flex gap-6 mt-2">
+                  <button
+                    type="button"
+                    className="p-2 border border-gray-100 rounded-full hover:bg-gray-50 transition-all cursor-pointer"
+                  >
+                    <img
+                      src="https://www.svgrepo.com/show/475656/google-color.svg"
+                      className="w-5 h-5"
+                      alt="Google"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    className="p-2 border border-gray-100 rounded-full hover:bg-gray-50 transition-all cursor-pointer"
+                  >
+                    <img
+                      src="https://www.svgrepo.com/show/475633/apple-color.svg"
+                      className="w-5 h-5"
+                      alt="Apple"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/login"
+              className="block mt-6 text-primary-navy font-semibold text-xs text-center hover:underline transition-all"
+            >
+              Already have an account? Login
+            </Link>
+          </form>
+        </div>
+      </section>
+    </main>
   );
 }
 
