@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
   const { login } = useAuth();
@@ -62,22 +63,22 @@ function Login() {
         <div className="w-full max-w-md">
           <div className="mb-10 text-left">
             <p className="text-primary-navy text-xs">Login</p>
-            <h2 className="text-lg font-medium text-primary-navy">
+            <h2 className="text-base font-medium text-primary-navy">
               Welcome Back
             </h2>
           </div>
 
-          <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <form onSubmit={handleLogin} className="flex flex-col gap-3">
             {/* Email Field */}
             <div className="relative border border-gray-200 rounded-lg focus-within:border-blue-600 transition-all">
               <input
                 type="email"
                 name="email"
                 placeholder=" "
-                className="block px-4 pt-6 pb-2 w-full text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
+                className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
-              <label className="absolute text-sm text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-4 peer-focus:-translate-y-3 peer-focus:scale-75 peer-focus:text-blue-600 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:-translate-y-3 peer-[:not(:placeholder-shown)]:scale-75">
+              <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
                 Email
               </label>
             </div>
@@ -88,24 +89,22 @@ function Login() {
                 type={isVisible ? "text" : "password"}
                 name="password"
                 placeholder=" "
-                className="block px-4 pt-6 pb-2 w-full text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
+                className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
-              <label className="absolute text-sm text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-4 peer-focus:-translate-y-3 peer-focus:scale-75 peer-focus:text-blue-600 peer-[:not(:placeholder-shown)]:top-4 peer-[:not(:placeholder-shown)]:-translate-y-3 peer-[:not(:placeholder-shown)]:scale-75">
+              <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
                 Password
               </label>
 
-              {/* Toggle Button */}
               <button
                 type="button"
                 onClick={toggleVisibility}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600 transition-colors cursor-pointer"
               >
                 {isVisible ? (
-                  /* Eye Slash Icon (Visible) */
                   <svg
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -118,10 +117,9 @@ function Login() {
                     />
                   </svg>
                 ) : (
-                  /* Eye Icon (Hidden) */
                   <svg
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
@@ -141,27 +139,30 @@ function Login() {
                 )}
               </button>
             </div>
-            <div className="text-center">
-              <a
-                href="#"
-                className="text-[#0052FF] font-semibold text-sm underline underline-offset-4"
-              >
-                Forgot Password
-              </a>
-            </div>
 
+            {/* Forgot Password Link */}
+            <Link
+              to="/forgotpassword"
+              className="text-primary-navy font-semibold text-xs hover:underline transition-all"
+            >
+              Forgot Password
+            </Link>
+
+            {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-[#2970FF] text-white py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200"
+              className="w-full mt-8 bg-[#2260FF] text-white py-3 rounded-full text-sm hover:bg-blue-600 transition-colors shadow shadow-blue-200 hover:cursor-pointer"
             >
               Login
             </button>
 
-            <div className="text-center mt-4">
-              <p className="text-[#0D1B3E] font-medium">
-                I don't have an account
-              </p>
-            </div>
+            {/* Sign Up Link */}
+            <Link
+              to="/signup"
+              className="block text-primary-navy font-semibold text-xs text-center hover:underline transition-all"
+            >
+              I don't have an account
+            </Link>
           </form>
         </div>
       </section>
