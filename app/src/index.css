@@ -59,39 +59,3 @@
     color: var(--color-medium-gray);
   }
 }
-
-@layer components {
-  .container-padding {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  @media (min-width: 640px) {
-    .container-padding {
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .container-padding {
-      padding-left: 5rem;
-      padding-right: 5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container-padding {
-      padding-left: 10rem;
-      padding-right: 10rem;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .container-padding {
-      padding-left: 12rem;
-      padding-right: 12rem;
-    }
-  }
-
-}
