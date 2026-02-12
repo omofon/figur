@@ -68,7 +68,7 @@ const Dashboard = () => {
         <header className="flex justify-between items-center mb-10">
           <div>
             <h1 className="text-2xl font-bold">
-              Welcome, {user?.name || "Andrew"}!
+              Welcome, {user?.name || user?.email}!
             </h1>
             <p className="text-sm">
               Here's what's happening with your money today.

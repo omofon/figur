@@ -3,8 +3,8 @@ export const validateEmail = (email) => {
 };
 
 export const validatePassword = (password) => {
-  // Min 8 chars, at least one letter and one number
-  return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
+  // Min 8 chars, at least one letter and one number (allows special chars)
+  return /^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(password);
 };
 
 export const validatePhone = (phone) => {

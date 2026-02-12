@@ -15,13 +15,11 @@ function Login() {
   }
 
   async function handleLogin(formData) {
-    // Get the data from form
     const data = {
       email: formData.get("email"),
       password: formData.get("password"),
     };
 
-    // Run the utility validation
     const { isValid, errors: validationErrors } = validateAuthForm(data, [
       "email",
       "password",
@@ -33,19 +31,11 @@ function Login() {
     }
 
     try {
-      const user = { email: data.email };
-      await login(user);
+      await login({ email: data.email });
       navigate("/dashboard");
     } catch (err) {
       setErrors({ form: "Invalid credentials. Please try again." });
     }
-
-    const user = {
-      email: formData.get("email"),
-    };
-
-    login(user);
-    navigate("/dashboard");
   }
 
   return (

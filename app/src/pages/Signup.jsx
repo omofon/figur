@@ -16,13 +16,13 @@ function Signup() {
 
   async function handleSignup(formData) {
     const data = {
-      username: formData.get("username"),
+      name: formData.get("name"),
       email: formData.get("email"),
       password: formData.get("password"),
     };
 
     const { isValid, errors: validationErrors } = validateAuthForm(data, [
-      "username",
+      "name",
       "email",
       "password",
     ]);
@@ -34,7 +34,7 @@ function Signup() {
 
     try {
       // Logic for account creation here
-      await login({ email: data.email });
+      await login({ name: data.name, email: data.email });
       navigate("/dashboard");
     } catch (err) {
       setErrors({ form: "Could not create account. Please try again." });
@@ -86,23 +86,23 @@ function Signup() {
           </div>
 
           <form action={handleSignup} className="flex flex-col gap-3">
-            {/* Username Field */}
+            {/* Name Field */}
             <div
-              className={`relative border rounded-lg transition-all ${errors.username ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+              className={`relative border rounded-lg transition-all ${errors.name ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
             >
               <input
                 type="text"
-                name="username"
+                name="name"
                 placeholder=" "
                 className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
               <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
-                Username
+                name
               </label>
-              {errors.username && (
+              {errors.name && (
                 <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
-                  {errors.username}
+                  {errors.name}
                 </span>
               )}
             </div>
