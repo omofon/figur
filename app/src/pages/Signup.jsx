@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { validateAuthForm } from "../utils/validation";
 
 function Signup() {
-  const { login } = useAuth(); // Assuming logic is similar or update to your signup context
+  const { login } = useAuth();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [errors, setErrors] = useState({});
