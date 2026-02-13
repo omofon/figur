@@ -33,10 +33,160 @@ function Header() {
             aria-label="Main navigation"
             className="hidden lg:flex items-center gap-3"
           >
-            {/* ... (Your existing desktop nav code remains the same) */}
             <ul className="flex gap-10">
               <li className="relative group">
-                {/* ... Individual button and dropdown */}
+                <button
+                  aria-expanded="false"
+                  aria-haspopup="menu"
+                  aria-controls="individual-menu"
+                  id="individual-button"
+                  className="inline-flex items-center gap-1 text-medium-gray hover:text-dark-blue font-medium cursor-pointer text-sm"
+                >
+                  Individual
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    className="mt-0.5"
+                  >
+                    <path
+                      d="M7 10L12 15L17 10"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                {/* Drop down menu - Updated Styles */}
+
+                <div
+                  id="individual-menu"
+                  role="menu"
+                  aria-labelledby="individual-button"
+                  className="absolute top-full left-0 z-50 hidden group-hover:flex flex-col gap-2 p-6 bg-white rounded-xl shadow-xl border border-gray-50 w-[380px] animate-appear"
+                >
+                  {/* Dollar Card */}
+                  <a
+                    href="/products/virtual-dollar-card"
+                    role="menuitem"
+                    className="flex gap-4 items-center p-2 rounded-lg hover:bg-gray-50 transition-all group/item"
+                  >
+                    <div className="h-10 w-10 shrink-0 bg-[#FCE7D2] rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5"
+                        viewBox="0 0 512 512"
+                        fill="#D97706"
+                      >
+                        <rect
+                          x="64"
+                          y="128"
+                          width="384"
+                          height="256"
+                          rx="40"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <p className="font-bold text-primary-navy text-sm">
+                        Dollar Card
+                      </p>
+
+                      <p className="text-xs text-medium-gray">
+                        Shop locally & Pay globally
+                      </p>
+                    </div>
+                  </a>
+                  {/* Airtime to cash */}
+                  <a
+                    href="/products/airtime-to-cash"
+                    role="menuitem"
+                    className="flex gap-4 items-center p-2 rounded-lg hover:bg-gray-50 transition-all group/item"
+                  >
+                    <div className="h-10 w-10 shrink-0 bg-[#E1F7E1] rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-[#22C55E]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <p className="font-bold text-primary-navy text-sm">
+                        Airtime to cash
+                      </p>
+
+                      <p className="text-xs text-medium-gray">
+                        Convert airtime to cash instantly
+                      </p>
+                    </div>
+                  </a>
+                  {/* Gift Card */}
+                  <a
+                    href="/products/gift-card"
+                    role="menuitem"
+                    className="flex gap-4 items-center p-2 rounded-lg hover:bg-gray-50 transition-all group/item"
+                  >
+                    <div className="h-10 w-10 shrink-0 bg-[#F3F8C4] rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-[#A3A113]"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M20 6h-2.18c.11-.31.18-.65.18-1a2.5 2.5 0 00-5-0c0 .35.07.69.18 1H11c.11-.31.18-.65.18-1a2.5 2.5 0 00-5 0c0 .35.07.69.18 1H4a2 2 0 00-2 2v12c0 1.1.9 2 2 2h16a2 2 0 002-2V8a2 2 0 00-2-2z" />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <p className="font-bold text-primary-navy text-sm">
+                        Gift Card
+                      </p>
+
+                      <p className="text-xs text-medium-gray">
+                        Purchase over 5,000+ gift cards
+                      </p>
+                    </div>
+                  </a>
+                  {/* Pay bills */}
+                  <a
+                    href="/products/pay-bills"
+                    role="menuitem"
+                    className="flex gap-4 items-center p-2 rounded-lg hover:bg-gray-50 transition-all group/item"
+                  >
+                    <div className="h-10 w-10 shrink-0 bg-[#D7F7F8] rounded-full flex items-center justify-center">
+                      <svg
+                        className="w-5 h-5 text-[#06B6D4]"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z" />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <p className="font-bold text-primary-navy text-sm">
+                        Pay bills
+                      </p>
+
+                      <p className="text-xs text-medium-gray">
+                        Buy Cheap Data, Electricity, TV, Airtime & more
+                      </p>
+                    </div>
+                  </a>
+                </div>
               </li>
               <li>
                 <a
@@ -73,14 +223,12 @@ function Header() {
           </Link>
         </div>
 
-        {/* 3. Add onClick to the Hamburger Button */}
         <button
           onClick={toggleMenu}
           className="lg:hidden block p-2 ml-auto cursor-pointer"
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (
-            /* X Icon when open */
             <svg
               width="32"
               height="32"
@@ -96,7 +244,6 @@ function Header() {
               />
             </svg>
           ) : (
-            /* Hamburger Icon when closed */
             <svg
               width="32"
               height="32"
@@ -127,7 +274,6 @@ function Header() {
           )}
         </button>
 
-        {/* 4. Use a template literal to toggle the 'hidden' class */}
         <div
           className={`${isMenuOpen ? "flex" : "hidden"} absolute top-full left-0 z-30 w-full bg-white shadow-lg flex-col items-center py-6 gap-6 lg:hidden animate-appear`}
         >

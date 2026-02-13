@@ -72,13 +72,14 @@ const BusinessFeatures = () => {
             key={index}
             className="bg-[#0A1A2F]/50 border border-gray-700/30 rounded-2xl p-8 flex flex-col items-start transition-hover hover:border-gray-500/50"
           >
-            <div className="w-20 h-20 mb-8">
+            <div className="w-full h-20 mb-8 flex flex-col items-center justify-center">
               <img
                 src={feature.img}
                 alt={feature.alt}
-                className="w-full h-full object-contain"
+                className="h-full object-contain"
               />
             </div>
+
             <h3 className="text-white text-lg lg:text-base font-semibold leading-tight text-left w-full">
               {feature.title}
             </h3>
