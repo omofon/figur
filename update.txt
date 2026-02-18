@@ -1,0 +1,7 @@
+1. Responsiveness esp for larger resolution
+1.1. Services button
+1.2. Negative margin for absolute image
+2. Form validation
+2.1. Back to home page from login/signup
+3. Firebase backend for authentication
+4. Work on dashboard
