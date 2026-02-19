@@ -91,7 +91,6 @@ figur/
 1. **Clone the repository**
    ```bash
    git clone https://github.com/omofon/figur.git
-   cd app
    ```
 
 2. **Install dependencies**
