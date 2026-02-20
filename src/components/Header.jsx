@@ -9,8 +9,8 @@ function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white shadow-2xs container-padding py-4">
-      <div className="flex items-center w-full relative">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white py-4">
+      <div className="flex items-center w-full relative container-padding">
         <div className="flex items-center justify-between gap-10">
           <a href="/" className="flex items-center mr-5 gap-2">
             <svg
