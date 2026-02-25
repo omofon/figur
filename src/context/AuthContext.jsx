@@ -1,34 +1,74 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import {
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail,
+  updateProfile,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth, googleProvider } from "../firebase/config";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
-  );
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const signup = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("isAuth", "true");
-    setUser(userData);
-  };
+  // Listen for auth state changes
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+    return unsubscribe;
+  }, []);
 
-  const login = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("isAuth", "true");
-    setUser(userData);
-  };
+  // Auth Methods
+  function signup({ email, password, displayName }) {
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      ({ user }) => updateProfile(user, { displayName }),
+    );
+  }
 
-  const logout = () => {
-    localStorage.clear();
-    setUser(null);
+  function login(email, password) {
+    return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  function loginWithGoogle() {
+    return signInWithPopup(auth, googleProvider);
+  }
+
+  function logout() {
+    return signOut(auth);
+  }
+
+  function resetPassword(email) {
+    return sendPasswordResetEmail(auth, email);
+  }
+
+  const value = {
+    currentUser,
+    loading,
+    signup,
+    login,
+    loginWithGoogle,
+    logout,
+    resetPassword,
   };
 
   return (
-    <AuthContext.Provider value={{ user, signup, login, logout }}>
-      {children}
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 }
 
-export const useAuth = () => useContext(AuthContext);
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+}
