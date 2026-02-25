@@ -10,6 +10,9 @@ function Signup() {
   const [isVisible, setIsVisible] = useState(false);
   const [errors, setErrors] = useState({});
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   function toggleVisibility() {
     setIsVisible(!isVisible);
   }
@@ -87,7 +90,7 @@ function Signup() {
 
           <form action={handleSignup} className="flex flex-col gap-3">
             {/* Name Field */}
-            <div
+            {/* <div
               className={`relative border rounded-lg transition-all ${errors.name ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
             >
               <input
@@ -105,7 +108,7 @@ function Signup() {
                   {errors.name}
                 </span>
               )}
-            </div>
+            </div> */}
 
             {/* Email Field */}
             <div
@@ -115,6 +118,8 @@ function Signup() {
                 type="email"
                 name="email"
                 placeholder=" "
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
@@ -136,6 +141,8 @@ function Signup() {
                 type={isVisible ? "text" : "password"}
                 name="password"
                 placeholder=" "
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="block px-4 pr-10 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
