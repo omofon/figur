@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const Dashboard = () => {
-  const { user, logout } = useAuth();
+export default function Dashboard() {
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Overview");
+
+  async function handleLogout() {
+    setError("");
+    try {
+      await logout();
+      navigate("/login");
+    } catch {
+      setError("Failed to sign out. Please try again.");
+    }
+  }
 
   const stats = [
     {
@@ -36,7 +49,19 @@ const Dashboard = () => {
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50 font-inter">
       {/* Sidebar - Desktop Only */}
       <aside className="hidden md:flex w-64 bg-primary-navy flex-col text-white p-6 gap-8">
-        <h2 className="text-white text-2xl font-bold tracking-tight">Figur.</h2>
+        <Link to="/" className="flex items-center gap-2 mb-2">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z" />
+          </svg>
+          <span className="text-2xl font-bold text-white">figur</span>
+        </Link>
+
         <nav className="flex flex-col gap-2">
           {["Overview", "Dollar Card", "Airtime", "Bills", "Settings"].map(
             (item) => (
@@ -54,8 +79,9 @@ const Dashboard = () => {
             ),
           )}
         </nav>
+
         <button
-          onClick={logout}
+          onClick={handleLogout}
           className="mt-auto border border-gray-600 px-4 py-2 rounded-lg hover:bg-red-500/10 hover:border-red-500 transition-all"
         >
           Logout
@@ -68,7 +94,7 @@ const Dashboard = () => {
         <header className="flex justify-between items-center mb-10">
           <div>
             <h1 className="text-2xl font-bold">
-              Welcome, {user?.name || user?.email}!
+              {currentUser.displayName || currentUser.email}
             </h1>
             <p className="text-sm">
               Here's what's happening with your money today.
@@ -76,7 +102,7 @@ const Dashboard = () => {
           </div>
           <div className="h-10 w-10 bg-mint rounded-full flex items-center justify-center border border-teal/20">
             <span className="text-teal font-bold">
-              {user?.name?.[0] || "A"}
+              {currentUser?.name?.[0] || "A"}
             </span>
           </div>
         </header>
@@ -199,6 +225,4 @@ const Dashboard = () => {
       </main>
     </div>
   );
-};
-
-export default Dashboard;
+}

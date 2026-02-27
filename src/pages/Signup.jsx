@@ -20,6 +20,18 @@ export default function Signup() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
+  async function handleGoogle() {
+    setError("");
+    try {
+      await loginWithGoogle();
+      navigate("/dashboard");
+    } catch (err) {
+      if (err.code !== "auth/popup-closed-by-user") {
+        setError(getSignupError(err.code));
+      }
+    }
+  }
+
   function togglePasswordVisibility() {
     setIsPasswordVisible(!isPasswordVisible);
   }
@@ -323,6 +335,7 @@ export default function Signup() {
                 <div className="flex gap-6 mt-2">
                   <button
                     type="button"
+                    onClick={handleGoogle}
                     className="p-2 border border-gray-100 rounded-full hover:bg-gray-50 transition-all cursor-pointer"
                   >
                     <img
