@@ -26,10 +26,16 @@ export function AuthProvider({ children }) {
   }, []);
 
   // Auth Methods
-  function signup({ email, password, displayName }) {
-    return createUserWithEmailAndPassword(auth, email, password).then(
-      ({ user }) => updateProfile(user, { displayName }),
+  async function signup(email, password, displayName) {
+    const { user } = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password,
     );
+    if (displayName?.trim()) {
+      await updateProfile(user, { displayName });
+    }
+    return user;
   }
 
   function login(email, password) {
