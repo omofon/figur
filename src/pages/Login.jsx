@@ -1,40 +1,46 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { validateAuthForm } from "../utils/validation";
 
-function Login() {
-  const { login } = useAuth();
-  const navigate = useNavigate();
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [errors, setErrors] = useState({});
+
+  const { login, loginWithGoogle } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/dashboard";
 
   function toggleVisibility() {
     setIsVisible(!isVisible);
   }
 
-  async function handleLogin(formData) {
-    const data = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-    };
-
-    const { isValid, errors: validationErrors } = validateAuthForm(data, [
-      "email",
-      "password",
-    ]);
-
-    if (!isValid) {
-      setErrors(validationErrors);
-      return;
-    }
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
-      await login({ email: data.email });
-      navigate("/dashboard");
+      await login(email, password);
+      navigate(from, { replace: true });
     } catch (err) {
-      setErrors({ form: "Invalid credentials. Please try again." });
+      setError(getErrorMessage(err.code));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleGoogle() {
+    setError("");
+    try {
+      await loginWithGoogle();
+      navigate(from, { replace: true });
+    } catch (err) {
+      setError(getErrorMessage(err.code));
     }
   }
 
@@ -44,7 +50,7 @@ function Login() {
       <section className="hidden lg:flex lg:basis-2/5 items-center justify-center bg-primary-blue lg:pl-16 lg:pr-30 relative overflow-hidden">
         {/* Text Content */}
         <div className="flex flex-col gap-8 z-10 max-w-80">
-          <div className="flex items-center gap-2 mb-2">
+          <Link to="/" className="flex items-center gap-2 mb-2">
             <svg
               width="24"
               height="24"
@@ -55,7 +61,7 @@ function Login() {
               <path d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z" />
             </svg>
             <span className="text-2xl font-bold text-white">figur</span>
-          </div>
+          </Link>
           <h1 className="text-white font-bold text-3xl 2xl:text-4xl leading-tight">
             More than a digital payment
           </h1>
@@ -85,15 +91,27 @@ function Login() {
             </h2>
           </div>
 
-          <form action={handleLogin} className="flex flex-col gap-3">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+            {/* Error Message - Far Right */}
+            {error && (
+              <div className="relative">
+                <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
+                  {error}
+                </span>
+              </div>
+            )}
+
             {/* Email Field */}
             <div
-              className={`relative border rounded-lg transition-all ${errors.email ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+              className={`relative border rounded-lg transition-all ${error.email ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
             >
               <input
                 type="email"
                 name="email"
                 placeholder=" "
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
                 className="block px-4 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
@@ -102,22 +120,23 @@ function Login() {
               </label>
 
               {/* Error Message - Far Right */}
-              {errors.email && (
+              {error.email && (
                 <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
-                  {errors.email}
+                  {error.email}
                 </span>
               )}
             </div>
 
             {/* Password Field */}
             <div
-              className={`relative mt-4 border rounded-lg transition-all ${errors.password ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
+              className={`relative mt-4 border rounded-lg transition-all ${error.password ? "border-red-500" : "border-gray-200 focus-within:border-blue-600"}`}
             >
               <input
                 type={isVisible ? "text" : "password"}
                 name="password"
                 placeholder=" "
-                /* Added pr-10 so text doesn't overlap the eye icon or the error */
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="block px-4 pr-10 pt-5 pb-1 w-full text-sm text-gray-900 bg-transparent rounded-lg appearance-none focus:outline-none focus:ring-0 peer"
                 required
               />
@@ -125,10 +144,10 @@ function Login() {
                 Password
               </label>
 
-              {/* Error Message - Far Right (Pushed left slightly to avoid the eye icon) */}
-              {errors.password && (
+              {/* Error Message Password */}
+              {error.password && (
                 <span className="absolute right-10 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
-                  {errors.password}
+                  {error.password}
                 </span>
               )}
 
@@ -187,10 +206,48 @@ function Login() {
             {/* Submit Button */}
             <button
               type="submit"
+              disabled={loading}
               className="w-full mt-8 bg-[#2260FF] text-white py-3 rounded-full text-sm hover:bg-blue-600 transition-colors shadow shadow-blue-200 hover:cursor-pointer"
             >
-              Login
+              {loading ? "Signing in..." : "Login"}
             </button>
+
+            {/* Social Sign Up Section */}
+            <div className="mt-6">
+              <div className="flex flex-col items-center gap-4">
+                <div className="flex items-center w-full gap-4">
+                  <div className="flex-1 border-t border-gray-200"></div>
+                  <span className="text-[10px] text-gray-400 uppercase tracking-wider">
+                    or continue with
+                  </span>
+                  <div className="flex-1 border-t border-gray-200"></div>
+                </div>
+
+                <div className="flex gap-6 mt-2">
+                  <button
+                    type="button"
+                    onClick={handleGoogle}
+                    className="p-2 border border-gray-100 rounded-full hover:bg-gray-50 transition-all cursor-pointer"
+                  >
+                    <img
+                      src="https://www.svgrepo.com/show/475656/google-color.svg"
+                      className="w-5 h-5"
+                      alt="Google"
+                    />
+                  </button>
+                  <button
+                    type="button"
+                    className="p-2 border border-gray-100 rounded-full hover:bg-gray-50 transition-all cursor-pointer"
+                  >
+                    <img
+                      src="https://www.svgrepo.com/show/475633/apple-color.svg"
+                      className="w-5 h-5"
+                      alt="Apple"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
 
             {/* Sign Up Link */}
             <Link
@@ -206,4 +263,14 @@ function Login() {
   );
 }
 
-export default Login;
+function getErrorMessage(code) {
+  const messages = {
+    "auth/user-not-found": "No account found with this email.",
+    "auth/wrong-password": "Incorrect password.",
+    "auth/invalid-credential": "Invalid email or password.",
+    "auth/too-many-requests": "Too many attempts. Try again later.",
+    "auth/user-disabled": "This account has been disabled.",
+    "auth/network-request-failed": "Network error. Check your connection.",
+  };
+  return messages[code] || "Something went wrong. Please try again.";
+}
