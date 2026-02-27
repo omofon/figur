@@ -92,10 +92,10 @@ export default function Login() {
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            {/* Error Message - Far Right */}
+            {/* Error Message */}
             {error && (
-              <div className="relative">
-                <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
+              <div className="self-end">
+                <span className="text-xs font-medium text-red-500 pointer-events-none text-right">
                   {error}
                 </span>
               </div>
@@ -118,13 +118,6 @@ export default function Login() {
               <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
                 Email
               </label>
-
-              {/* Error Message - Far Right */}
-              {error.email && (
-                <span className="absolute right-3 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
-                  {error.email}
-                </span>
-              )}
             </div>
 
             {/* Password Field */}
@@ -143,13 +136,6 @@ export default function Login() {
               <label className="absolute text-xs text-gray-400 duration-300 transform left-4 z-10 origin-left top-1/2 -translate-y-1/2 scale-100 peer-focus:top-2 peer-focus:-translate-y-1.5 peer-focus:text-blue-600 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:-translate-y-1.5 peer-[:not(:placeholder-shown)]:scale-90">
                 Password
               </label>
-
-              {/* Error Message Password */}
-              {error.password && (
-                <span className="absolute right-10 top-2 text-[10px] font-medium text-red-500 pointer-events-none">
-                  {error.password}
-                </span>
-              )}
 
               <button
                 type="button"
