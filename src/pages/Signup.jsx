@@ -72,13 +72,10 @@ export default function Signup() {
     if (/[A-Z]/.test(pw)) score++;
     if (/[0-9]/.test(pw)) score++;
     if (/[^A-Za-z0-9]/.test(pw)) score++;
-    if (/^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(pw)) score++;
     return score;
   }
   const strength = getStrength(form.password);
-  const strengthLabel = ["", "Weak", "Fair", "Good", "Strong", "Excellent"][
-    strength
-  ];
+  const strengthLabel = ["", "Weak", "Fair", "Good", "Strong"][strength];
 
   return (
     <main className="flex min-h-screen flex-col lg:flex-row">
@@ -233,22 +230,26 @@ export default function Signup() {
 
             {/* Strength bar */}
             {form.password && (
-              <div className="strength-bar">
-                {[1, 2, 3, 4].map((n) => (
-                  <div
-                    key={n}
-                    className={`bar-segment`}
-                    style={{
-                      background:
-                        n <= strength
-                          ? ["", "#ef4444", "#f97316", "#eab308", "#22c55e"][
-                              strength
-                            ]
-                          : "#333",
-                    }}
-                  />
-                ))}
-                <span>{strengthLabel}</span>
+              <div className="mt-2 flex items-center gap-2">
+                <div className="flex flex-1 gap-1">
+                  {[1, 2, 3, 4].map((n) => (
+                    <div
+                      key={n}
+                      className="h-1 flex-1 rounded-full transition-colors duration-300"
+                      style={{
+                        background:
+                          n <= strength
+                            ? ["", "#ef4444", "#f97316", "#eab308", "#22c55e"][
+                                strength
+                              ]
+                            : "#333",
+                      }}
+                    />
+                  ))}
+                </div>
+                <span className="text-xs font-medium text-medium-gray min-w-15 text-right">
+                  {strengthLabel}
+                </span>
               </div>
             )}
 
