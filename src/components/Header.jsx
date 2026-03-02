@@ -1,15 +1,26 @@
 import { Link } from "react-router-dom";
-import { useState } from "react"; // Added useState
+import { useEffect, useState } from "react";
 
 function Header() {
-  // 1. Add state to track if the menu is open
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // 2. Function to toggle the state
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  // Updates is isScrolled if user scrolls the screen 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white py-4">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 bg-white py-4 ${isScrolled ? "backdrop-blur-md shadow-lg" : "shadow-none"}`}
+    >
       <div className="flex items-center w-full relative container-padding">
         <div className="flex items-center justify-between gap-10">
           <a href="/" className="flex items-center mr-5 gap-2">
@@ -61,8 +72,8 @@ function Header() {
                     />
                   </svg>
                 </button>
-                {/* Drop down menu - Updated Styles */}
 
+                {/* Drop down menu - Updated Styles */}
                 <div
                   id="individual-menu"
                   role="menu"
