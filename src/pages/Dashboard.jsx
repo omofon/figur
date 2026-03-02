@@ -55,7 +55,7 @@ export default function Dashboard() {
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50 font-inter">
       {/* Sidebar - Handles both desktop and mobile */}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 w-64 max-h-screen bg-primary-navy flex flex-col gap-5 justify-between text-white p-6 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 top-0 z-40 w-64 max-h-screen bg-primary-navy flex flex-col gap-5 justify-between text-white p-6 transform transition-transform duration-300 ease-in-out md:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -114,7 +114,7 @@ export default function Dashboard() {
       )}
 
       {/* Main Content */}
-      <main className="flex-1 p-4 md:p-10 lg:px-20 overflow-y-auto">
+      <main className="flex-1 p-4 md:p-10 md:ml-64 lg:px-20 overflow-y-auto">
         {/* Header */}
         <header className="flex justify-between items-center mb-10">
           <div className="flex items-center gap-4">
