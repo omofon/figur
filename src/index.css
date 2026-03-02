@@ -68,4 +68,12 @@
   .features-card {
     @apply bg-[#15376F] rounded-2xl p-8 flex flex-col items-start justify-between transition-all hover:bg-[#15376F]/80 hover:cursor-pointer h-full;
   }
+
+  .transition-sleek {
+    @apply lg:group-hover:translate-y-0 lg:translate-y-4 transition-all duration-300 ease-in-out;
+  }
+
+  .service-button {
+    @apply mt-2 w-fit cursor-pointer rounded-full bg-primary-blue px-4 py-2 text-sm text-white transition-all duration-300 hover:bg-primary-navy lg:pointer-events-none lg:translate-y-4 lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:translate-y-0 lg:group-hover:opacity-100;
+  }
 }
