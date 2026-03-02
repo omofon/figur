@@ -1,8 +1,8 @@
 import React from "react";
 
-const Hero = () => {
+function Hero() {
   return (
-    <section className="container-padding flex flex-col justify-center gap-15 lg:flex-row sm:gap-20">
+    <section className="container-padding flex flex-col justify-center gap-15 lg:flex-row sm:gap-20 lg:min-h-screen lg:pt-10">
       <div className="flex flex-col items-center lg:items-start mt-10 md:mt-20 text-center lg:text-start gap-8 lg:w-[60%]">
         {/* Badge */}
         <div className="flex gap-3 items-center py-3 px-4 rounded-full bg-mint border border-[#C4EAEB]">
@@ -119,6 +119,6 @@ const Hero = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Hero;
