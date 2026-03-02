@@ -5,13 +5,10 @@ import { useAuth } from "../context/AuthContext";
 export default function Dashboard() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
-  const [isHidden, setIsHidden] = useState(true);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Overview");
 
-  function toggleUserMenu() {
-    setIsHidden((prev) => !prev);
-  }
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   async function handleLogout() {
     setError("");
@@ -21,6 +18,10 @@ export default function Dashboard() {
     } catch {
       setError("Failed to sign out. Please try again.");
     }
+  }
+
+  function toggleSidebar() {
+    setIsSidebarOpen((prev) => !prev);
   }
 
   const stats = [
@@ -52,27 +53,39 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50 font-inter">
-      {/* Sidebar - Desktop Only */}
-      <aside className="hidden md:flex w-64 bg-primary-navy flex-col text-white p-6 gap-8">
-        <Link to="/" className="flex items-center gap-2 mb-2">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="white"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z" />
-          </svg>
-          <span className="text-2xl font-bold text-white">figur</span>
-        </Link>
-
+      {/* Sidebar - Handles both desktop and mobile */}
+      <aside
+        className={`fixed inset-y-0 left-0 z-40 w-64 max-h-screen bg-primary-navy flex flex-col gap-5 justify-between text-white p-6 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 mb-2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M13.789.422a4.001 4.001 0 0 0-3.578 0l-8 4A4.0011 4.0011 0 0 0 0 8v8c0 1.515.856 2.9 2.211 3.578l8 4a4.001 4.001 0 0 0 3.578 0l8-4A4.0011 4.0011 0 0 0 24 16V8c0-1.515-.856-2.9-2.211-3.578l-8-4ZM8 8c0-2.209 1.791-4 4-4s4 1.791 4 4v8c0 2.209-1.791 4-4 4s-4-1.791-4-4V8Zm6 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2Z" />
+            </svg>
+            <span className="text-2xl font-bold text-white">figur</span>
+          </Link>
+          {/* Close button for mobile */}
+          <button onClick={toggleSidebar} className="md:hidden text-white">
+            ✕
+          </button>
+        </div>
         <nav className="flex flex-col gap-2">
           {["Overview", "Dollar Card", "Airtime", "Bills", "Settings"].map(
             (item) => (
               <button
                 key={item}
-                onClick={() => setActiveTab(item)}
+                onClick={() => {
+                  setActiveTab(item);
+                  setIsSidebarOpen(false);
+                }}
                 className={`text-left px-4 py-3 rounded-lg transition-all ${
                   activeTab === item
                     ? "bg-primary-blue text-white"
@@ -84,7 +97,6 @@ export default function Dashboard() {
             ),
           )}
         </nav>
-
         <button
           onClick={handleLogout}
           className="mt-auto border border-gray-600 px-4 py-2 rounded-lg hover:bg-red-500/10 hover:border-red-500 transition-all"
@@ -93,48 +105,55 @@ export default function Dashboard() {
         </button>
       </aside>
 
+      {/* Overlay for mobile sidebar */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-30 md:hidden"
+          onClick={toggleSidebar}
+        />
+      )}
+
       {/* Main Content */}
       <main className="flex-1 p-4 md:p-10 lg:px-20 overflow-y-auto">
         {/* Header */}
         <header className="flex justify-between items-center mb-10">
-          <div>
-            <h1 className="text-2xl font-bold">
-              {currentUser.displayName || currentUser.email}
-            </h1>
-            <p className="text-sm">
-              Here's what's happening with your money today.
-            </p>
-          </div>
-          <div className="relative">
+          <div className="flex items-center gap-4">
+            {/* Hamburger Menu Button */}
             <button
-              aria-expanded={!isHidden}
-              aria-haspopup="menu"
-              aria-controls="user-menu"
-              id="user-button"
-              onClick={toggleUserMenu}
-              className="h-10 w-10 bg-mint rounded-full flex items-center justify-center border border-teal/20 text-teal hover:bg-green-100 cursor-pointer"
+              onClick={toggleSidebar}
+              className="md:hidden p-2 rounded-lg bg-white shadow-sm border border-gray-100"
             >
-              <span className="text-teal font-bold">
-                {currentUser?.name?.[0] || "A"}
-              </span>
-            </button>
-            <div
-              className={`${isHidden ? "hidden" : "flex flex-col"} absolute top-full left-1/2 -translate-x-1/2 mt-3 z-50  gap-2 p-6 bg-white rounded-xl shadow-xl border border-gray-50 animate-appear`}
-            >
-              <button
-                role="menu"
-                id="user-menu"
-                aria-labelledby="user-menu-button"
-                onClick={handleLogout}
-                className="mt-auto border border-gray-600 px-4 py-2 text-sm rounded-lg hover:bg-red-500/10 hover:border-red-500 transition-all animate-appear"
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                Logout
-              </button>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+            <div>
+              <h1 className="text-2xl font-bold">
+                {currentUser.displayName || currentUser.email}
+              </h1>
+              <p className="text-sm">
+                Here's what's happening with your money today.
+              </p>
             </div>
           </div>
+          <button className="h-10 w-10 bg-mint rounded-full flex items-center justify-center border border-teal/20 text-teal hover:bg-green-100 cursor-pointer">
+            <span className="text-teal font-bold">
+              {currentUser?.name?.[0] || "A"}
+            </span>
+          </button>
         </header>
 
-        {/* Hero Card - Matches App UI */}
+        {/* Hero Card */}
         <div className="bg-primary-navy rounded-3xl p-8 text-white mb-8 shadow-xl relative overflow-hidden">
           <div className="relative z-10">
             <p className="text-gray-400 text-sm mb-1">Total Balance</p>
