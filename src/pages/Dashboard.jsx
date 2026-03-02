@@ -5,8 +5,13 @@ import { useAuth } from "../context/AuthContext";
 export default function Dashboard() {
   const { currentUser, logout } = useAuth();
   const [error, setError] = useState("");
+  const [isHidden, setIsHidden] = useState(true);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("Overview");
+
+  function toggleUserMenu() {
+    setIsHidden((prev) => !prev);
+  }
 
   async function handleLogout() {
     setError("");
@@ -100,10 +105,32 @@ export default function Dashboard() {
               Here's what's happening with your money today.
             </p>
           </div>
-          <div className="h-10 w-10 bg-mint rounded-full flex items-center justify-center border border-teal/20">
-            <span className="text-teal font-bold">
-              {currentUser?.name?.[0] || "A"}
-            </span>
+          <div className="relative">
+            <button
+              aria-expanded={!isHidden}
+              aria-haspopup="menu"
+              aria-controls="user-menu"
+              id="user-button"
+              onClick={toggleUserMenu}
+              className="h-10 w-10 bg-mint rounded-full flex items-center justify-center border border-teal/20 text-teal hover:bg-green-100 cursor-pointer"
+            >
+              <span className="text-teal font-bold">
+                {currentUser?.name?.[0] || "A"}
+              </span>
+            </button>
+            <div
+              className={`${isHidden ? "hidden" : "flex flex-col"} absolute top-full left-1/2 -translate-x-1/2 mt-3 z-50  gap-2 p-6 bg-white rounded-xl shadow-xl border border-gray-50 animate-appear`}
+            >
+              <button
+                role="menu"
+                id="user-menu"
+                aria-labelledby="user-menu-button"
+                onClick={handleLogout}
+                className="mt-auto border border-gray-600 px-4 py-2 text-sm rounded-lg hover:bg-red-500/10 hover:border-red-500 transition-all animate-appear"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </header>
 
