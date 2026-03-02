@@ -10,7 +10,7 @@ const Partners = () => {
   const logoGroups = [1, 2, 3, 4];
 
   return (
-    <section className="container-padding flex flex-col lg:flex-row gap-8 items-center py-5 overflow-hidden">
+    <section className="container-padding flex flex-col lg:flex-row gap-8 items-center py-5 overflow-hidden mb-16 md:mb-20">
       <span className="shrink-0 text-base font-bold text-primary-navy whitespace-nowrap px-4">
         Banking Partners
       </span>

@@ -35,7 +35,7 @@ const BusinessFeatures = () => {
   ];
 
   return (
-    <section className=" bg-primary-navy flex flex-col gap-10 py-16 md:py-24 lg:py-32">
+    <section className=" bg-primary-navy flex flex-col gap-10 py-16 md:py-24 lg:py-32 mb-16 md:mb-20">
       <div className="container-padding">
         {/* Title with Image */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center md:border-b md:border-b-gray-700/40 relative">
@@ -67,7 +67,7 @@ const BusinessFeatures = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-15">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mt-15">
           {features.map((feature, index) => (
             <div
               key={index}

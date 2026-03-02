@@ -2,7 +2,7 @@ import React from "react";
 
 const Services = () => {
   return (
-    <section className="container-padding flex flex-col">
+    <section className="container-padding flex flex-col mb-16 md:mb-20">
       <h2 className="text-center text-2xl font-extrabold px-10 mb-14">
         Transforming the way people pay, work, play and live
       </h2>

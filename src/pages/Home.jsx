@@ -11,7 +11,7 @@ function Home() {
   return (
     <div className="flex flex-col bg-white min-h-screen">
       <Header />
-      <main className="pt-24 flex flex-col gap-16 md:gap-20">
+      <main className="pt-24 flex flex-col">
         <Hero />
         <Services />
         <Partners />

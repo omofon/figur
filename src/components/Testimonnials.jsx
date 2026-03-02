@@ -53,7 +53,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="container-padding flex flex-col gap-10 py-12">
+    <section className="container-padding flex flex-col gap-10 py-12 mb-16 md:mb-20">
       {/* Header */}
       <div className="flex flex-col items-center gap-6 px-4 md:px-10">
         <h2 className="text-center text-3xl md:text-4xl font-bold">
