@@ -34,15 +34,15 @@ Figur is built as a high-performance Single Page Application (SPA) using React a
 
 ## 🛠 Tech Stack
 
-| Category           | Technology              |
-|--------------------|-------------------------|
-| Frontend Framework | React.js (via Vite)     |
-| Styling            | Tailwind CSS            |
-| Routing            | React Router DOM        |
-| State Management   | React Context API       |
-| Validation         | Custom regex utilities  |
-| Build Tool         | Vite                    |
-| Deployment         | Vercel                  |
+| Category           | Technology          |
+| ------------------ | ------------------- |
+| Frontend Framework | React.js (via Vite) |
+| Styling            | Tailwind CSS        |
+| Routing            | React Router DOM    |
+| State Management   | React Context API   |
+| Authentication     | Firebase Auth       |
+| Build Tool         | Vite                |
+| Deployment         | Vercel              |
 
 ---
 
@@ -52,21 +52,28 @@ Figur is built as a high-performance Single Page Application (SPA) using React a
 figur/
 ├── src/
 │   ├── components/          # Reusable UI components
-│   │   ├── BusinessFeatu...
+│   │   ├── AdminRoute.jsx
+│   │   ├── BusinessFeatures.jsx
+│   │   ├── Cta.jsx
 │   │   ├── Footer.jsx
 │   │   ├── Header.jsx
+│   │   ├── Hero.jsx
 │   │   ├── Partners.jsx
 │   │   ├── ProtectedRoute.jsx
 │   │   ├── Services.jsx
 │   │   └── Testimonials.jsx
 │   ├── context/             # Global state management
 │   │   └── AuthContext.jsx
+│   ├── firebase/             # Firebase config
+│   │   └── config.js
 │   ├── pages/               # Full-page views
 │   │   ├── Dashboard.jsx
+│   │   ├── ForgotPassword.jsx
 │   │   ├── Home.jsx
 │   │   ├── Login.jsx
 │   │   └── Signup.jsx
 │   ├── utils/               # Helper functions & validation
+│   │   └── validation.js
 │   ├── App.jsx              # Root routing configuration
 │   └── main.jsx             # Application entry point
 ├── public/                  # Static assets
@@ -89,22 +96,27 @@ figur/
 ### Steps
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/omofon/figur.git
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    ```
+
    The application will be available at `http://localhost:5173`
 
 4. **Build for production**
+
    ```bash
    npm run build
    ```
@@ -120,22 +132,17 @@ figur/
 
 ### 1. Authentication & Security
 
-The application uses a Context API provider to manage user sessions across the platform. Security features include:
+The application uses Firebase Authentication to manage user sessions across the platform. Security features include:
 
-- **Protected Routes**: A wrapper component (`ProtectedRoute.jsx`) that redirects unauthenticated users to the login page
-- **LocalStorage Persistence**: User data and authentication status persist across browser sessions
-- **Secure Navigation**: Conditional rendering based on authentication state
+- **Protected Routes**: A wrapper component (`ProtectedRoute.jsx`) that checks Firebase auth state on every navigation. Unauthenticated users are redirected to `/login`, with the originally requested URL preserved so they are sent back after signing in
+- **Firebase Session Persistence**: Auth state is managed by Firebase via `onAuthStateChanged`, which persists sessions using IndexedDB by default — more secure than localStorage and handled automatically
+- **Auth Context**: A global `AuthContext` wraps the app and exposes `login`, `signup`, `logout`, `loginWithGoogle`, and `resetPassword` to any component without prop drilling
+- **Google OAuth**: Users can sign up and log in via Google using `signInWithPopup`
+- **Password Validation**: Client-side rules require a minimum of 8 characters, with a live strength indicator scoring uppercase, numbers, and special characters. Firebase enforces a minimum of 6 characters server-side
+- **Error Handling**: Firebase error codes are mapped to human-readable messages covering invalid credentials, existing accounts, weak passwords, and rate limiting
+- **Secure Navigation**: Conditional rendering and route protection are based on live Firebase auth state, not locally stored flags
 
-### 2. Form Validation
-
-A dedicated utility module handles strict validation for financial contexts:
-
-- **Email**: Standard RFC-compliant format verification
-- **Phone**: Supports Nigerian formats (starting with `0` or `+234`)
-- **Password**: Minimum 8 characters with at least one letter and one number
-- **Name**: Minimum 2 characters, letters only
-
-### 3. Responsive Navigation
+### 2. Responsive Navigation
 
 The Header component features:
 
@@ -143,7 +150,7 @@ The Header component features:
 - **Interactive Dropdowns**: Detailed product menus for Individual and Business services
 - **Smooth Transitions**: Professional animations using Tailwind classes
 
-### 4. State Management
+### 3. State Management
 
 Centralized state management via React Context API provides:
 
@@ -156,13 +163,17 @@ Centralized state management via React Context API provides:
 ## 📸 Features Gallery
 
 ### Desktop Navigation
+
 Clean, professional header with dropdowns for exploring Individual and Business products.
 
 ### Mobile Experience
+
 Optimized hamburger menu providing easy access to all features on the go.
 
 ### Dashboard Interface
+
 Data-rich interface displaying:
+
 - Recent transactions
 - Cashflow statistics (income vs. expenses)
 - Active saving plans with progress tracking
@@ -172,12 +183,12 @@ Data-rich interface displaying:
 
 ## 🚦 Available Scripts
 
-| Command              | Description                          |
-|----------------------|--------------------------------------|
-| `npm run dev`        | Start development server            |
-| `npm run build`      | Build for production                |
-| `npm run preview`    | Preview production build locally    |
-| `npm run lint`       | Run ESLint for code quality         |
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `npm run dev`     | Start development server         |
+| `npm run build`   | Build for production             |
+| `npm run preview` | Preview production build locally |
+| `npm run lint`    | Run ESLint for code quality      |
 
 ---
 
@@ -232,6 +243,7 @@ GitHub: [@omofon](https://github.com/omofon)
 ## 📧 Contact & Support
 
 For questions, feedback, or support:
+
 - Open an issue on [GitHub](https://github.com/omofon/figur/issues)
 - Check out the [live demo](https://figur-app.vercel.app/)
 
